@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Rapidito Snacks - Menú Digital PWA</title>
+
+  <!-- Metadatos PWA -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#d9381e">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="theme-rapidito">
+
+  <!-- LAYOUT PRINCIPAL -->
+  <div class="app-layout">
+
+    <!-- CONTENIDO DE LA APP -->
+    <div class="main-content">
+
+      <!-- ENCABEZADO CON LOGO Y MARCA -->
+      <header class="app-header">
+        <div class="brand-container">
+          <!-- Puedes colocar la imagen de tu logo aquí -->
+          <img src="logo-rapidito.png" alt="Rapidito Snacks" class="brand-logo-img">
+          <div class="brand-titles">
+            <h1 class="brand-title">RAPIDITO</h1>
+            <span class="brand-subtitle">SNACKS • DELICIAS RÁPIDAS</span>
+          </div>
+        </div>
+        <div class="status-badge">
+          <span class="status-dot"></span> Abierto
+        </div>
+      </header>
+
+      <!-- BANNER DE PROMOCIÓN DESTACADA -->
+      <section class="hero-promo">
+        <div class="promo-card">
+          <span class="promo-badge">🔥 El Más Pedido</span>
+          <div class="promo-content">
+            <div class="promo-info">
+              <h2>COMBO RAPIDITO</h2>
+              <p>1 Hamburguesa Especial + 5 Alitas BBQ + Papas a la francesa y Refresco frío.</p>
+              <div class="promo-footer">
+                <span class="promo-price">$145.00</span>
+                <button class="btn-add-promo" onclick="addToCart(101)">+ Agregar</button>
+              </div>
+            </div>
+            <div class="promo-thumb">
+              <img src="https://images.unsplash.com/photo-1561758033-d89a9ad46330?w=400" alt="Combo Rapidito">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- BARRA DE BÚSQUEDA -->
+      <div class="search-box">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="search-input" placeholder="Buscar hamburguesa, alitas, postres...">
+      </div>
+
+      <!-- BOTONES DE CATEGORÍAS SEGÚN TU LOGO -->
+      <nav class="category-scroll" id="categories-container">
+        <button class="cat-btn active" data-category="todos">
+          <span class="cat-emoji">🔥</span>
+          <span class="cat-text">Todo</span>
+        </button>
+        <button class="cat-btn" data-category="hamburguesas">
+          <span class="cat-emoji">🍔</span>
+          <span class="cat-text">Hamburguesas</span>
+        </button>
+        <button class="cat-btn" data-category="hotdogs">
+          <span class="cat-emoji">🌭</span>
+          <span class="cat-text">Hotdogs</span>
+        </button>
+        <button class="cat-btn" data-category="alitas">
+          <span class="cat-emoji">🍗</span>
+          <span class="cat-text">Alitas</span>
+        </button>
+        <button class="cat-btn" data-category="postres">
+          <span class="cat-emoji">🍦</span>
+          <span class="cat-text">Postres / Helados</span>
+        </button>
+        <button class="cat-btn" data-category="bebidas">
+          <span class="cat-emoji">🥤</span>
+          <span class="cat-text">Bebidas</span>
+        </button>
+        <button class="cat-btn" data-category="snacks">
+          <span class="cat-emoji">🍟</span>
+          <span class="cat-text">Snacks</span>
+        </button>
+      </nav>
+
+      <!-- LISTADO DE PRODUCTOS -->
+      <section class="products-section">
+        <div class="section-title-wrap">
+          <h2 id="category-title">Menú Principal</h2>
+        </div>
+
+        <div class="products-grid" id="products-grid">
+          
+          <!-- Ejemplo Tarjeta Hamburguesa -->
+          <article class="product-card">
+            <div class="card-img-wrap">
+              <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=300" alt="Hamburguesa Especial">
+              <span class="card-tag">Recomendado</span>
+            </div>
+            <div class="card-body">
+              <h3>Hamburguesa Rapidito</h3>
+              <p>Carne 100% res, queso derretido, tocino crujiente, cebolla asada y aderezo especial.</p>
+              <div class="card-action">
+                <span class="price">$85.00</span>
+                <button class="btn-add-item" onclick="addToCart(1)">+ Pedir</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Ejemplo Tarjeta Alitas -->
+          <article class="product-card">
+            <div class="card-img-wrap">
+              <img src="https://images.unsplash.com/photo-1567620832903-9fc6debc209f?w=300" alt="Alitas Picositas">
+            </div>
+            <div class="card-body">
+              <h3>Alitas Picositas (8 pcs)</h3>
+              <p>Bañadas en salsa Buffalo o BBQ, acompañadas de aderezo ranch y papas.</p>
+              <div class="card-action">
+                <span class="price">$110.00</span>
+                <button class="btn-add-item" onclick="addToCart(2)">+ Pedir</button>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+    </div>
+
+    <!-- PANEL DEL CARRITO / PEDIDO -->
+    <aside class="cart-sidebar" id="cart-sidebar">
+      <div class="cart-header">
+        <h3>🛒 Tu Pedido</h3>
+        <span class="items-count" id="cart-count">0</span>
+      </div>
+
+      <div class="cart-list" id="cart-items-list">
+        <div class="empty-state">
+          <span>🍽️</span>
+          <p>Aún no has agregado delicias a tu pedido.</p>
+        </div>
+      </div>
+
+      <div class="cart-footer">
+        <div class="total-row">
+          <span>Total:</span>
+          <strong id="total-val">$0.00</strong>
+        </div>
+
+        <!-- OPCIONES DE ENTREGA -->
+        <div class="delivery-options">
+          <label>
+            <input type="radio" name="delivery-type" value="sucursal" checked>
+            <span>Para recoger</span>
+          </label>
+          <label>
+            <input type="radio" name="delivery-type" value="domicilio">
+            <span>Domicilio</span>
+          </label>
+        </div>
+
+        <button class="btn-send-whatsapp" onclick="sendOrderWhatsApp()">
+          📱 Enviar Pedido por WhatsApp
+        </button>
+      </div>
+    </aside>
+
+  </div>
+
+  <!-- NAVEGACIÓN INFERIOR PARA MÓVIL -->
+  <nav class="mobile-bottom-nav">
+    <button class="nav-btn active">
+      <span>🏠</span>
+      <small>Menú</small>
+    </button>
+    <button class="nav-btn" onclick="toggleMobileCart()">
+      <div class="cart-icon-badge">
+        <span>🛒</span>
+        <span class="badge" id="mobile-cart-badge">0</span>
+      </div>
+      <small>Pedido</small>
+    </button>
+  </nav>
+
+  <script src="app.js"></script>
+</body>
+</html>
