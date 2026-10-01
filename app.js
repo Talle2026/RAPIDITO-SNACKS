@@ -259,12 +259,12 @@ const productos = [
   },
   {
     id: 24,
-    nombre: "Té Arizona 680ml",
+    nombre: "Té Arizona",
     categoria: "refrescos",
     precio: 30,
-    descripcion: "Lata grande de Té Arizona helado sabor a elegir.",
+    descripcion: "Lata de Té Arizona helado sabor a elegir.",
     imagen: "https://images.unsplash.com/photo-1556881286-fc6915169721?w=300",
-    destacado: "680ml",
+    destacado: "Helado",
     sabores: ["Té Verde con Miel", "Sandía", "Mango (Mucho Mango)", "Té Negro con Limón", "Fruit Punch"]
   },
 
