@@ -135,16 +135,25 @@
         <!-- OPCIONES DE ENTREGA -->
         <div class="delivery-options">
           <label>
-            <input type="radio" name="delivery-type" value="sucursal" checked>
+            <input type="radio" name="delivery-type" value="sucursal" checked onchange="toggleAddressInput()">
             <span>Para recoger</span>
           </label>
           <label>
-            <input type="radio" name="delivery-type" value="domicilio">
+            <input type="radio" name="delivery-type" value="domicilio" onchange="toggleAddressInput()">
             <span>Domicilio</span>
           </label>
         </div>
 
-        <button class="btn-send-whatsapp" onclick="sendOrderWhatsApp()">
+        <!-- CAMPO Y BOTÓN DE UBICACIÓN (DESPLEGABLE AL ELEGIR DOMICILIO) -->
+        <div id="delivery-address-container" style="display: none; margin-top: 10px;">
+          <input type="text" id="client-address" placeholder="Calle, número, colonia..." style="width: 100%; padding: 8px; border-radius: 6px; border: 1px solid #333; background: #1a1a1a; color: #fff; font-size: 0.85rem; margin-bottom: 8px; box-sizing: border-box;">
+          <button type="button" id="btn-gps" onclick="obtenerUbicacionGPS()" style="width: 100%; padding: 8px; background: #2a2a2a; color: #ffb703; border: 1px solid #ffb703; border-radius: 6px; font-size: 0.8rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 5px;">
+            📍 Usar mi ubicación actual (GPS)
+          </button>
+          <small id="gps-status" style="display: block; font-size: 0.75rem; color: #aaa; margin-top: 4px; text-align: center;"></small>
+        </div>
+
+        <button class="btn-send-whatsapp" onclick="sendOrderWhatsApp()" style="margin-top: 12px;">
           📱 Enviar Pedido por WhatsApp
         </button>
       </div>
@@ -167,6 +176,6 @@
     </button>
   </nav>
 
-  <script src="app.js?v=3.2"></script>
+  <script src="app.js?v=3.3"></script>
 </body>
 </html>
