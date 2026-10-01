@@ -177,19 +177,22 @@ const productos = [
     nombre: "Duraznos con Crema",
     categoria: "postres",
     precio: 50,
-    descripcion: "Rebanadas de duraznos en almíbar con cremosa salsa dulce.",
-    imagen: "https://images.unsplash.com/photo-1595981267035-7b04ca84a82d?w=300",
-    destacado: ""
+    descripcion: "Rebanadas de duraznos en almíbar servidos con crema dulce especial.",
+    imagen: "https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?w=400",
+    destacado: "🍑 Delicioso"
   },
   {
     id: 18,
     nombre: "Arroz con Leche",
     categoria: "postres",
     precio: 50,
-    descripcion: "Tradicional arroz con leche con toque de canela.",
-    imagen: "https://images.unsplash.com/photo-1517433670267-08bbd4be890f?w=300",
+    descripcion: "Cremoso arroz con leche espolvoreado con canela.",
+    imagen: "https://images.unsplash.com/photo-1517433670267-08bbd4be890f?w=400",
     destacado: "Tradicional"
   },
+
+  https://images.unsplash.com/photo-1517433670267-08bbd4be890f?w=300",
+    destacado: "Tradi
 
   // --- BEBIDAS Y MOJITOS ---
   {
