@@ -1,3 +1,7 @@
+// ==========================================
+// RAPIDITO SNACKS - LÓGICA DE LA APLICACIÓN
+// ==========================================
+
 // 1. BASE DE DATOS DE PRODUCTOS
 const productos = [
   {
@@ -65,26 +69,37 @@ function renderProductos(items) {
   if (!grid) return;
   grid.innerHTML = "";
 
+  if (items.length === 0) {
+    grid.innerHTML = `
+      <div style="grid-column: 1 / -1; text-align: center; padding: 40px 10px; color: var(--text-muted);">
+        <p style="font-size: 1.5rem;">🔍</p>
+        <p>No se encontraron productos.</p>
+      </div>
+    `;
+    return;
+  }
+
   items.forEach(prod => {
-    // Si no es la promo principal, renderizar en el grid
-    if (prod.id !== 101) {
-      grid.innerHTML += `
-        <article class="product-card">
-          <div class="card-img-wrap">
-            <img src="${prod.imagen}" alt="${prod.nombre}" loading="lazy">
-            ${prod.destacado ? `<span class="card-tag">${prod.destacado}</span>` : ''}
-          </div>
-          <div class="card-body">
-            <h3>${prod.nombre}</h3>
-            <p>${prod.descripcion}</p>
-            <div class="card-action">
-              <span class="price">$${prod.precio.toFixed(2)}</span>
-              <button class="btn-add-item" onclick="addToCart(${prod.id})">+ Pedir</button>
-            </div>
-          </div>
-        </article>
-      `;
-    }
+    // Si es la promo destacada principal (ID 101), no renderizar en el grid estándar
+    if (prod.id === 101) return;
+
+    const article = document.createElement("article");
+    article.className = "product-card";
+    article.innerHTML = `
+      <div class="card-img-wrap">
+        <img src="${prod.imagen}" alt="${prod.nombre}" loading="lazy" onerror="this.src='https://via.placeholder.com/300x200?text=Rapidito+Snacks'">
+        ${prod.destacado ? `<span class="card-tag">${prod.destacado}</span>` : ''}
+      </div>
+      <div class="card-body">
+        <h3>${prod.nombre}</h3>
+        <p>${prod.descripcion}</p>
+        <div class="card-action">
+          <span class="price">$${prod.precio.toFixed(2)}</span>
+          <button class="btn-add-item" onclick="addToCart(${prod.id})">+ Pedir</button>
+        </div>
+      </div>
+    `;
+    grid.appendChild(article);
   });
 }
 
@@ -121,33 +136,35 @@ function actualizarCarritoUI() {
   if (totalVal) totalVal.innerText = `$${totalPrecio.toFixed(2)}`;
 
   // Dibujar elementos en el sidebar
-  if (cartList) {
-    if (carrito.length === 0) {
-      cartList.innerHTML = `
-        <div class="empty-state">
-          <span>🍽️</span>
-          <p>Aún no has agregado delicias a tu pedido.</p>
-        </div>
-      `;
-    } else {
-      cartList.innerHTML = "";
-      carrito.forEach(item => {
-        cartList.innerHTML += `
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; background:#121212; padding:8px; border-radius:8px;">
-            <div>
-              <strong style="font-size:0.85rem;">${item.nombre}</strong>
-              <div style="font-size:0.75rem; color:#ffb703;">$${item.precio} x ${item.cantidad}</div>
-            </div>
-            <div style="display:flex; gap:5px; align-items:center;">
-              <button onclick="cambiarCantidad(${item.id}, -1)" style="background:#2a2a2a; color:white; border:none; padding:2px 8px; border-radius:4px; cursor:pointer;">-</button>
-              <span style="font-size:0.85rem;">${item.cantidad}</span>
-              <button onclick="cambiarCantidad(${item.id}, 1)" style="background:#d9381e; color:white; border:none; padding:2px 8px; border-radius:4px; cursor:pointer;">+</button>
-            </div>
-          </div>
-        `;
-      });
-    }
+  if (!cartList) return;
+
+  if (carrito.length === 0) {
+    cartList.innerHTML = `
+      <div class="empty-state">
+        <span>🍽️</span>
+        <p>Aún no has agregado delicias a tu pedido.</p>
+      </div>
+    `;
+    return;
   }
+
+  cartList.innerHTML = "";
+  carrito.forEach(item => {
+    const itemDiv = document.createElement("div");
+    itemDiv.style.cssText = "display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; background: #121212; padding: 8px; border-radius: 8px;";
+    itemDiv.innerHTML = `
+      <div style="flex: 1; padding-right: 8px;">
+        <strong style="font-size: 0.85rem; display: block;">${item.nombre}</strong>
+        <div style="font-size: 0.75rem; color: #ffb703;">$${(item.precio * item.cantidad).toFixed(2)}</div>
+      </div>
+      <div style="display: flex; gap: 5px; align-items: center;">
+        <button onclick="cambiarCantidad(${item.id}, -1)" style="background: #2a2a2a; color: white; border: none; padding: 2px 8px; border-radius: 4px; cursor: pointer;">-</button>
+        <span style="font-size: 0.85rem; width: 16px; text-align: center;">${item.cantidad}</span>
+        <button onclick="cambiarCantidad(${item.id}, 1)" style="background: #d9381e; color: white; border: none; padding: 2px 8px; border-radius: 4px; cursor: pointer;">+</button>
+      </div>
+    `;
+    cartList.appendChild(itemDiv);
+  });
 }
 
 // 5. CAMBIAR CANTIDAD (+ / -)
@@ -164,10 +181,12 @@ function cambiarCantidad(id, cambio) {
   actualizarCarritoUI();
 }
 
-// 6. FILTRAR POR CATEGORÍAS
+// 6. INICIALIZACIÓN Y EVENTOS DE BÚSQUEDA Y NAVEGACIÓN
 document.addEventListener("DOMContentLoaded", () => {
   renderProductos(productos);
+  actualizarCarritoUI();
 
+  // Filtros por Categoría
   const categoryButtons = document.querySelectorAll(".cat-btn");
   categoryButtons.forEach(btn => {
     btn.addEventListener("click", (e) => {
@@ -191,7 +210,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const searchInput = document.getElementById("search-input");
   if (searchInput) {
     searchInput.addEventListener("input", (e) => {
-      const texto = e.target.value.toLowerCase();
+      const texto = e.target.value.toLowerCase().trim();
       const filtrados = productos.filter(p => 
         p.nombre.toLowerCase().includes(texto) || 
         p.descripcion.toLowerCase().includes(texto)
@@ -199,22 +218,39 @@ document.addEventListener("DOMContentLoaded", () => {
       renderProductos(filtrados);
     });
   }
+
+  // Ajuste en cambio de tamaño de ventana para restaurar layout
+  window.addEventListener("resize", () => {
+    const sidebar = document.getElementById("cart-sidebar");
+    if (sidebar && window.innerWidth >= 900) {
+      sidebar.style.display = "";
+      sidebar.style.position = "";
+      sidebar.style.top = "";
+      sidebar.style.left = "";
+      sidebar.style.width = "";
+      sidebar.style.height = "";
+      sidebar.style.zIndex = "";
+    }
+  });
 });
 
 // 7. ABRIR / CERRAR CARRITO EN MÓVIL
 function toggleMobileCart() {
   const sidebar = document.getElementById("cart-sidebar");
-  if (sidebar) {
-    if (sidebar.style.display === "flex") {
-      sidebar.style.display = "none";
-    } else {
-      sidebar.style.display = "flex";
-      sidebar.style.position = "fixed";
-      sidebar.style.top = "0";
-      sidebar.style.left = "0";
-      sidebar.style.width = "100%";
-      sidebar.style.zIndex = "1000";
-    }
+  if (!sidebar) return;
+
+  const isVisible = getComputedStyle(sidebar).display !== "none";
+
+  if (isVisible && sidebar.style.position === "fixed") {
+    sidebar.style.display = "none";
+  } else {
+    sidebar.style.display = "flex";
+    sidebar.style.position = "fixed";
+    sidebar.style.top = "0";
+    sidebar.style.left = "0";
+    sidebar.style.width = "100%";
+    sidebar.style.height = "100vh";
+    sidebar.style.zIndex = "1000";
   }
 }
 
@@ -225,7 +261,6 @@ function sendOrderWhatsApp() {
     return;
   }
 
-  // REEMPLAZA ESTE NÚMERO CON TU NÚMERO DE WHATSAPP (Con clave de país, ex: 521...)
   const telefonoWhatsApp = "525513774057";
 
   let mensaje = "Hola *RAPIDITO SNACKS*, me gustaría realizar el siguiente pedido:\n\n";
