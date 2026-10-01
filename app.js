@@ -67,7 +67,7 @@ const productos = [
     categoria: "hamburguesas",
     precio: 110,
     descripcion: "Doble carne de res, tocino, queso y aros de cebolla.",
-    imagen: "https://images.unsplash.com/photo-1583778176476-4a8b02a64c01?w=300",
+    imagen: "https://images.unsplash.com/photo-1586190848861-99aa4a171e90?w=300",
     destacado: "🍔 La Más Grande"
   },
 
@@ -143,7 +143,7 @@ const productos = [
     id: 12,
     nombre: "Orden de Alitas Fuego y Sabor",
     categoria: "alitas",
-    precio: 0,
+    precio: 110,
     descripcion: "Alitas crujientes. Salsas a elegir: Mango Habanero, Original, BBQ, Tamarindo Habanero, Fuego o Búfalo.",
     imagen: "https://images.unsplash.com/photo-1567620832903-9fc6debc209f?w=300",
     destacado: "Salsas Variadas"
