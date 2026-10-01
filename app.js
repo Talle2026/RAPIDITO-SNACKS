@@ -191,6 +191,83 @@ const productos = [
     destacado: "Tradicional"
   },
 
+  // --- REFRESCOS Y BEBIDAS ---
+  {
+    id: 19,
+    nombre: "Coca-Cola Original 335ml",
+    categoria: "refrescos",
+    precio: 25,
+    descripcion: "Lata fría de Coca-Cola sabor original 335ml.",
+    imagen: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300",
+    destacado: "Fría"
+  },
+  {
+    id: 25,
+    nombre: "Coca-Cola Sin Azúcar 335ml",
+    categoria: "refrescos",
+    precio: 25,
+    descripcion: "Lata fría de Coca-Cola Sin Azúcar 335ml.",
+    imagen: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300",
+    destacado: "Sin Azúcar"
+  },
+  {
+    id: 26,
+    nombre: "Coca-Cola Zero 335ml",
+    categoria: "refrescos",
+    precio: 25,
+    descripcion: "Lata fría de Coca-Cola Zero 335ml.",
+    imagen: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300",
+    destacado: "Zero"
+  },
+  {
+    id: 20,
+    nombre: "Sprite 335ml",
+    categoria: "refrescos",
+    precio: 25,
+    descripcion: "Refresco sabor lima-limón en lata bien fría.",
+    imagen: "https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?w=300",
+    destacado: ""
+  },
+  {
+    id: 21,
+    nombre: "Jarrito",
+    categoria: "refrescos",
+    precio: 25,
+    descripcion: "Tradicional refresco Jarrito del sabor de tu elección.",
+    imagen: "https://images.unsplash.com/photo-1581006852262-e4307cf6283a?w=300",
+    destacado: "Sazones de México",
+    sabores: ["Mandarina", "Tamarindo", "Toronja", "Limón", "Fruit Punch"]
+  },
+  {
+    id: 22,
+    nombre: "Manzanita Sol",
+    categoria: "refrescos",
+    precio: 25,
+    descripcion: "Refresco clásico sabor manzana.",
+    imagen: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300",
+    destacado: ""
+  },
+  {
+    id: 23,
+    nombre: "Boing",
+    categoria: "refrescos",
+    precio: 25,
+    descripcion: "Delicioso jugo de fruta Boing sabor a elegir.",
+    imagen: "https://images.unsplash.com/photo-1546173159-315724a31696?w=300",
+    destacado: "Fruta Real",
+    sabores: ["Mango", "Guayaba", "Durazno", "Uva", "Manzana"]
+  },
+  {
+    id: 24,
+    nombre: "Té Arizona 680ml",
+    categoria: "refrescos",
+    precio: 35,
+    descripcion: "Lata grande de Té Arizona helado sabor a elegir.",
+    imagen: "https://images.unsplash.com/photo-1556881286-fc6915169721?w=300",
+    destacado: "680ml",
+    sabores: ["Té Verde con Miel", "Sandía", "Mango (Mucho Mango)", "Té Negro con Limón", "Fruit Punch"]
+  },
+
   // --- BEBIDAS Y MOJITOS ---
   {
     id: 13,
@@ -241,7 +318,7 @@ function renderProductos(items) {
     if (prod.sabores && prod.sabores.length > 0) {
       selectorSaboresHtml = `
         <div style="margin: 8px 0;">
-          <label style="font-size: 0.75rem; color: #aaa; display: block; margin-bottom: 3px;">Sabor / Salsa:</label>
+          <label style="font-size: 0.75rem; color: #aaa; display: block; margin-bottom: 3px;">Sabor / Variedad:</label>
           <select id="sabor-${prod.id}" style="width: 100%; background: #1a1a1a; color: #fff; border: 1px solid #333; padding: 6px; border-radius: 6px; font-size: 0.8rem;">
             ${prod.sabores.map(sabor => `<option value="${sabor}">${sabor}</option>`).join('')}
           </select>
