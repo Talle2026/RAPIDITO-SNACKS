@@ -289,8 +289,9 @@ const productos = [
   }
 ];
 
-// Estado global del carrito
+// Estado global del carrito y ubicación GPS
 let carrito = [];
+let ubicacionGPS = null;
 
 // 2. RENDERIZAR PRODUCTOS EN EL GRID
 function renderProductos(items) {
@@ -506,6 +507,60 @@ function toggleMobileCart() {
   }
 }
 
+// --- MOSTRAR / OCULTAR CAMPO DE DIRECCIÓN ---
+function toggleAddressInput() {
+  const isDomicilio = document.querySelector('input[name="delivery-type"][value="domicilio"]')?.checked;
+  const addressContainer = document.getElementById("delivery-address-container");
+  if (addressContainer) {
+    addressContainer.style.display = isDomicilio ? "block" : "none";
+  }
+}
+
+// --- OBTENER UBICACIÓN GPS DEL USUARIO ---
+function obtenerUbicacionGPS() {
+  const statusElem = document.getElementById("gps-status");
+  const btnGps = document.getElementById("btn-gps");
+
+  if (!navigator.geolocation) {
+    if (statusElem) {
+      statusElem.style.color = "#ff4d4d";
+      statusElem.innerText = "Tu navegador no soporta geolocalización.";
+    }
+    return;
+  }
+
+  if (btnGps) btnGps.innerText = "⏳ Obteniendo ubicación...";
+
+  navigator.geolocation.getCurrentPosition(
+    (position) => {
+      const lat = position.coords.latitude;
+      const lng = position.coords.longitude;
+      ubicacionGPS = `https://maps.google.com/?q=${lat},${lng}`;
+      
+      if (btnGps) {
+        btnGps.innerText = "✅ Ubicación obtenida";
+        btnGps.style.background = "#1b4332";
+        btnGps.style.borderColor = "#2dc653";
+        btnGps.style.color = "#fff";
+      }
+      if (statusElem) {
+        statusElem.style.color = "#2dc653";
+        statusElem.innerText = "Ubicación lista para enviarse.";
+      }
+    },
+    (error) => {
+      if (btnGps) btnGps.innerText = "📍 Usar mi ubicación actual (GPS)";
+      if (statusElem) {
+        statusElem.style.color = "#ff4d4d";
+        statusElem.innerText = error.code === error.PERMISSION_DENIED 
+          ? "Permiso de ubicación denegado." 
+          : "No se pudo obtener la ubicación.";
+      }
+    },
+    { enableHighAccuracy: true, timeout: 10000 }
+  );
+}
+
 // 8. ENVIAR PEDIDO A WHATSAPP
 function sendOrderWhatsApp() {
   if (carrito.length === 0) {
@@ -514,6 +569,7 @@ function sendOrderWhatsApp() {
   }
 
   const telefonoWhatsApp = "525648336057";
+  const deliveryType = document.querySelector('input[name="delivery-type"]:checked')?.value || "sucursal";
 
   let mensaje = "Hola *RAPIDITO SNACKS*, me gustaría realizar el siguiente pedido:\n\n";
 
@@ -527,11 +583,26 @@ function sendOrderWhatsApp() {
 
   mensaje += `\n*Total a Pagar:* $${total.toFixed(2)}\n`;
 
-  const deliveryType = document.querySelector('input[name="delivery-type"]:checked') || document.querySelector('input[name="delivery"]:checked');
-  const tipoEntrega = deliveryType ? deliveryType.value : "sucursal";
+  if (deliveryType === "domicilio") {
+    const direccionTexto = document.getElementById("client-address")?.value.trim() || "";
+    
+    if (!direccionTexto && !ubicacionGPS) {
+      alert("Por favor escribe tu dirección o comparte tu ubicación GPS para el envío a domicilio.");
+      return;
+    }
 
-  mensaje += `*Tipo de Pedido:* ${tipoEntrega === "domicilio" ? "Entrega a domicilio 🛵" : "Para recoger en local 🛍️"}\n\n`;
-  mensaje += "¡Muchas gracias!";
+    mensaje += `*Tipo de Pedido:* Entrega a domicilio 🛵\n`;
+    if (direccionTexto) {
+      mensaje += `*Dirección:* ${direccionTexto}\n`;
+    }
+    if (ubicacionGPS) {
+      mensaje += `*Ubicación GPS:* ${ubicacionGPS}\n`;
+    }
+  } else {
+    mensaje += `*Tipo de Pedido:* Para recoger en local 🛍️\n`;
+  }
+
+  mensaje += "\n¡Muchas gracias!";
 
   const url = `https://wa.me/${telefonoWhatsApp}?text=${encodeURIComponent(mensaje)}`;
   window.open(url, "_blank");
