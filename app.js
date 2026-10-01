@@ -153,6 +153,44 @@ const productos = [
     sabores: ["BBQ", "Mango Habanero", "Búfalo", "Tamarindo Habanero", "Fuego", "Original"]
   },
 
+  // --- POSTRES ---
+  {
+    id: 15,
+    nombre: "Carlota de Limón",
+    categoria: "postres",
+    precio: 50,
+    descripcion: "Postre frío de galleta con crema de limón casera.",
+    imagen: "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=300",
+    destacado: "🍰 Casero"
+  },
+  {
+    id: 16,
+    nombre: "Fresas con Crema",
+    categoria: "postres",
+    precio: 50,
+    descripcion: "Fresas frescas acompañadas de crema dulce especial.",
+    imagen: "https://images.unsplash.com/photo-1464305795204-6f5bbfc7fb81?w=300",
+    destacado: "🍓 Favorito"
+  },
+  {
+    id: 17,
+    nombre: "Duraznos con Crema",
+    categoria: "postres",
+    precio: 50,
+    descripcion: "Rebanadas de duraznos en almíbar con cremosa salsa dulce.",
+    imagen: "https://images.unsplash.com/photo-1595981267035-7b04ca84a82d?w=300",
+    destacado: ""
+  },
+  {
+    id: 18,
+    nombre: "Arroz con Leche",
+    categoria: "postres",
+    precio: 50,
+    descripcion: "Tradicional arroz con leche con toque de canela.",
+    imagen: "https://images.unsplash.com/photo-1517433670267-08bbd4be890f?w=300",
+    destacado: "Tradicional"
+  },
+
   // --- BEBIDAS Y MOJITOS ---
   {
     id: 13,
@@ -237,11 +275,9 @@ function addToCart(id) {
   const producto = productos.find(p => p.id === id);
   if (!producto) return;
 
-  // Obtener sabor si existe
   const selectElem = document.getElementById(`sabor-${id}`);
   const saborSeleccionado = selectElem ? selectElem.value : null;
 
-  // Identificador único por producto + sabor
   const itemKey = saborSeleccionado ? `${id}-${saborSeleccionado}` : `${id}`;
   const itemEnCarrito = carrito.find(item => item.key === itemKey);
 
@@ -395,14 +431,14 @@ function toggleMobileCart() {
   }
 }
 
-// 8. ENVIAR PEDIDO A WHATSAPP (INCLUYE SABOR)
+// 8. ENVIAR PEDIDO A WHATSAPP
 function sendOrderWhatsApp() {
   if (carrito.length === 0) {
     alert("Agrega al menos un producto a tu pedido.");
     return;
   }
 
-  const telefonoWhatsApp = "525648336057";
+  const telefonoWhatsApp = "525513774057";
 
   let mensaje = "Hola *RAPIDITO SNACKS*, me gustaría realizar el siguiente pedido:\n\n";
 
