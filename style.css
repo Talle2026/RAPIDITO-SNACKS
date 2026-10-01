@@ -347,6 +347,18 @@ body.theme-rapidito {
   border-bottom: 1px solid var(--border-color);
 }
 
+/* Botón para volver al menú desde el carrito en móviles */
+.btn-close-cart {
+  background: var(--dark-bg);
+  color: var(--accent-yellow);
+  border: 1px solid var(--border-color);
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
 .items-count {
   background: var(--primary-red);
   color: white;
@@ -462,8 +474,9 @@ body.theme-rapidito {
     display: flex;
   }
 
-  .mobile-bottom-nav {
-    display: none;
+  .mobile-bottom-nav,
+  .btn-close-cart {
+    display: none; /* Se ocultan en computadora */
   }
 
   body.theme-rapidito {
