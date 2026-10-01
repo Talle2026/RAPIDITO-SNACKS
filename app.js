@@ -368,7 +368,7 @@ function sendOrderWhatsApp() {
     return;
   }
 
-  const telefonoWhatsApp = "525648336057";
+  const telefonoWhatsApp = "525513774057";
 
   let mensaje = "Hola *RAPIDITO SNACKS*, me gustaría realizar el siguiente pedido:\n\n";
 
