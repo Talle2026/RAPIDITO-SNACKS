@@ -160,7 +160,7 @@ const productos = [
     categoria: "postres",
     precio: 50,
     descripcion: "Postre frío de galleta con crema de limón casera.",
-    imagen: "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=300",
+    imagen: "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=400",
     destacado: "🍰 Casero"
   },
   {
@@ -169,7 +169,7 @@ const productos = [
     categoria: "postres",
     precio: 50,
     descripcion: "Fresas frescas acompañadas de crema dulce especial.",
-    imagen: "https://images.unsplash.com/photo-1464305795204-6f5bbfc7fb81?w=300",
+    imagen: "https://images.unsplash.com/photo-1464305795204-6f5bbfc7fb81?w=400",
     destacado: "🍓 Favorito"
   },
   {
@@ -187,7 +187,7 @@ const productos = [
     categoria: "postres",
     precio: 50,
     descripcion: "Cremoso arroz con leche espolvoreado con canela.",
-    imagen: "https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?w=400",
+    imagen: "https://images.unsplash.com/photo-1517433670267-08bbd4be890f?w=400",
     destacado: "Tradicional"
   },
 
