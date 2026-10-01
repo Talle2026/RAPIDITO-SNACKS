@@ -191,11 +191,11 @@ const productos = [
     destacado: "Tradicional"
   },
 
-  // --- REFRESCOS Y BEBIDAS ---
+  // --- BEBIDAS Y REFRESCOS (TODOS UNIFICADOS BAJO "bebidas") ---
   {
     id: 19,
     nombre: "Coca-Cola Original 335ml",
-    categoria: "refrescos",
+    categoria: "bebidas",
     precio: 30,
     descripcion: "Lata fría de Coca-Cola sabor original 335ml.",
     imagen: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300",
@@ -204,7 +204,7 @@ const productos = [
   {
     id: 25,
     nombre: "Coca-Cola Sin Azúcar 335ml",
-    categoria: "refrescos",
+    categoria: "bebidas",
     precio: 30,
     descripcion: "Lata fría de Coca-Cola Sin Azúcar 335ml.",
     imagen: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300",
@@ -213,7 +213,7 @@ const productos = [
   {
     id: 26,
     nombre: "Coca-Cola Zero 335ml",
-    categoria: "refrescos",
+    categoria: "bebidas",
     precio: 30,
     descripcion: "Lata fría de Coca-Cola Zero 335ml.",
     imagen: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300",
@@ -222,7 +222,7 @@ const productos = [
   {
     id: 20,
     nombre: "Sprite 335ml",
-    categoria: "refrescos",
+    categoria: "bebidas",
     precio: 30,
     descripcion: "Refresco sabor lima-limón en lata bien fría.",
     imagen: "https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?w=300",
@@ -231,7 +231,7 @@ const productos = [
   {
     id: 21,
     nombre: "Jarrito",
-    categoria: "refrescos",
+    categoria: "bebidas",
     precio: 30,
     descripcion: "Tradicional refresco Jarrito del sabor de tu elección.",
     imagen: "https://images.unsplash.com/photo-1581006852262-e4307cf6283a?w=300",
@@ -241,7 +241,7 @@ const productos = [
   {
     id: 22,
     nombre: "Manzanita Sol",
-    categoria: "refrescos",
+    categoria: "bebidas",
     precio: 30,
     descripcion: "Refresco clásico sabor manzana.",
     imagen: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300",
@@ -250,7 +250,7 @@ const productos = [
   {
     id: 23,
     nombre: "Boing",
-    categoria: "refrescos",
+    categoria: "bebidas",
     precio: 30,
     descripcion: "Delicioso jugo de fruta Boing sabor a elegir.",
     imagen: "https://images.unsplash.com/photo-1546173159-315724a31696?w=300",
@@ -260,15 +260,13 @@ const productos = [
   {
     id: 24,
     nombre: "Té Arizona",
-    categoria: "refrescos",
+    categoria: "bebidas",
     precio: 30,
     descripcion: "Lata de Té Arizona helado sabor a elegir.",
     imagen: "https://images.unsplash.com/photo-1556881286-fc6915169721?w=300",
     destacado: "Helado",
     sabores: ["Té Verde con Miel", "Sandía", "Mango (Mucho Mango)", "Té Negro con Limón", "Fruit Punch"]
   },
-
-  // --- BEBIDAS Y MOJITOS ---
   {
     id: 13,
     nombre: "Mojito Individual (1 pza)",
