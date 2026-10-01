@@ -2,7 +2,7 @@
 // RAPIDITO SNACKS - LÓGICA Y BASE DE DATOS
 // ==========================================
 
-// 1. BASE DE DATOS DE PRODUCTOS
+// 1. BASE DE DATOS DE PRODUCTOS (CON SABORES Y OPCIONES)
 const productos = [
   // --- COMBOS Y PROMOS ---
   {
@@ -10,9 +10,10 @@ const productos = [
     nombre: "3 Kilos de Alitas",
     categoria: "promos",
     precio: 500,
-    descripcion: "3 kilos de alitas jugosas con salsa a elegir (BBQ, Mango Habanero, Búfalo, Tamarindo, Hot).",
+    descripcion: "3 kilos de alitas jugosas con salsa a elegir.",
     imagen: "https://images.unsplash.com/photo-1567620832903-9fc6debc209f?w=400",
-    destacado: "🔥 Para Compartir"
+    destacado: "🔥 Para Compartir",
+    sabores: ["BBQ", "Mango Habanero", "Búfalo", "Tamarindo", "Hot", "Original"]
   },
   {
     id: 102,
@@ -21,7 +22,8 @@ const productos = [
     precio: 250,
     descripcion: "3 Mojitos refrescantes a precio especial.",
     imagen: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=400",
-    destacado: "🍹 Promo Bebidas"
+    destacado: "🍹 Promo Bebidas",
+    sabores: ["Mango", "Frutos Rojos", "Mora Azul", "Combinados"]
   },
   {
     id: 103,
@@ -30,7 +32,8 @@ const productos = [
     precio: 150,
     descripcion: "1 Hamburguesa Sencilla + 1 Mojito del sabor de tu elección.",
     imagen: "https://images.unsplash.com/photo-1561758033-d89a9ad46330?w=400",
-    destacado: "⭐ Paquete Individual"
+    destacado: "⭐ Paquete Individual",
+    sabores: ["Mojito Mango", "Mojito Frutos Rojos", "Mojito Mora Azul"]
   },
 
   // --- HAMBURGUESAS ---
@@ -144,9 +147,10 @@ const productos = [
     nombre: "Orden de Alitas Fuego y Sabor",
     categoria: "alitas",
     precio: 110,
-    descripcion: "Alitas crujientes. Salsas a elegir: Mango Habanero, Original, BBQ, Tamarindo Habanero, Fuego o Búfalo.",
+    descripcion: "Alitas crujientes preparadas con la salsa de tu elección.",
     imagen: "https://images.unsplash.com/photo-1567620832903-9fc6debc209f?w=300",
-    destacado: "Salsas Variadas"
+    destacado: "Salsas Variadas",
+    sabores: ["BBQ", "Mango Habanero", "Búfalo", "Tamarindo Habanero", "Fuego", "Original"]
   },
 
   // --- BEBIDAS Y MOJITOS ---
@@ -155,18 +159,20 @@ const productos = [
     nombre: "Mojito Individual (1 pza)",
     categoria: "bebidas",
     precio: 100,
-    descripcion: "Refrescante mojito preparado. Sabores: Mango, Frutos Rojos o Mora Azul.",
+    descripcion: "Refrescante mojito preparado.",
     imagen: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=300",
-    destacado: ""
+    destacado: "",
+    sabores: ["Mango", "Frutos Rojos", "Mora Azul"]
   },
   {
     id: 14,
     nombre: "2 Mojitos x $180",
     categoria: "bebidas",
     precio: 180,
-    descripcion: "2 Mojitos preparados a elegir: Mango, Frutos Rojos o Mora Azul.",
+    descripcion: "2 Mojitos preparados a elegir.",
     imagen: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=300",
-    destacado: "Par de Mojitos"
+    destacado: "Par de Mojitos",
+    sabores: ["2x Mango", "2x Frutos Rojos", "2x Mora Azul", "1 Mango + 1 Frutos Rojos", "1 Mango + 1 Mora Azul", "1 Frutos Rojos + 1 Mora Azul"]
   }
 ];
 
@@ -190,8 +196,20 @@ function renderProductos(items) {
   }
 
   items.forEach(prod => {
-    // Si es combo promocional en la vista general, se omiten para no duplicar si hay banners
     if (prod.categoria === "promos" && items.length === productos.length) return;
+
+    // Generar Selector de Sabores si el producto los requiere
+    let selectorSaboresHtml = "";
+    if (prod.sabores && prod.sabores.length > 0) {
+      selectorSaboresHtml = `
+        <div style="margin: 8px 0;">
+          <label style="font-size: 0.75rem; color: #aaa; display: block; margin-bottom: 3px;">Sabor / Salsa:</label>
+          <select id="sabor-${prod.id}" style="width: 100%; background: #1a1a1a; color: #fff; border: 1px solid #333; padding: 6px; border-radius: 6px; font-size: 0.8rem;">
+            ${prod.sabores.map(sabor => `<option value="${sabor}">${sabor}</option>`).join('')}
+          </select>
+        </div>
+      `;
+    }
 
     const article = document.createElement("article");
     article.className = "product-card";
@@ -203,6 +221,7 @@ function renderProductos(items) {
       <div class="card-body">
         <h3>${prod.nombre}</h3>
         <p>${prod.descripcion}</p>
+        ${selectorSaboresHtml}
         <div class="card-action">
           <span class="price">$${prod.precio.toFixed(2)}</span>
           <button class="btn-add-item" onclick="addToCart(${prod.id})">+ Pedir</button>
@@ -213,17 +232,28 @@ function renderProductos(items) {
   });
 }
 
-// 3. AGREGAR PRODUCTO AL CARRITO
+// 3. AGREGAR PRODUCTO AL CARRITO CON SABOR SELECCIONADO
 function addToCart(id) {
   const producto = productos.find(p => p.id === id);
   if (!producto) return;
 
-  const itemEnCarrito = carrito.find(item => item.id === id);
+  // Obtener sabor si existe
+  const selectElem = document.getElementById(`sabor-${id}`);
+  const saborSeleccionado = selectElem ? selectElem.value : null;
+
+  // Identificador único por producto + sabor
+  const itemKey = saborSeleccionado ? `${id}-${saborSeleccionado}` : `${id}`;
+  const itemEnCarrito = carrito.find(item => item.key === itemKey);
 
   if (itemEnCarrito) {
     itemEnCarrito.cantidad++;
   } else {
-    carrito.push({ ...producto, cantidad: 1 });
+    carrito.push({
+      ...producto,
+      key: itemKey,
+      sabor: saborSeleccionado,
+      cantidad: 1
+    });
   }
 
   actualizarCarritoUI();
@@ -259,15 +289,19 @@ function actualizarCarritoUI() {
   carrito.forEach(item => {
     const itemDiv = document.createElement("div");
     itemDiv.style.cssText = "display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; background: #121212; padding: 8px; border-radius: 8px;";
+    
+    const detalleSabor = item.sabor ? `<span style="font-size: 0.72rem; color: #ffb703; display: block;">Sabor: ${item.sabor}</span>` : '';
+
     itemDiv.innerHTML = `
       <div style="flex: 1; padding-right: 8px;">
         <strong style="font-size: 0.85rem; display: block;">${item.nombre}</strong>
-        <div style="font-size: 0.75rem; color: #ffb703;">$${(item.precio * item.cantidad).toFixed(2)}</div>
+        ${detalleSabor}
+        <div style="font-size: 0.75rem; color: #aaa;">$${(item.precio * item.cantidad).toFixed(2)}</div>
       </div>
       <div style="display: flex; gap: 5px; align-items: center;">
-        <button onclick="cambiarCantidad(${item.id}, -1)" style="background: #2a2a2a; color: white; border: none; padding: 2px 8px; border-radius: 4px; cursor: pointer;">-</button>
+        <button onclick="cambiarCantidad('${item.key}', -1)" style="background: #2a2a2a; color: white; border: none; padding: 2px 8px; border-radius: 4px; cursor: pointer;">-</button>
         <span style="font-size: 0.85rem; width: 16px; text-align: center;">${item.cantidad}</span>
-        <button onclick="cambiarCantidad(${item.id}, 1)" style="background: #d9381e; color: white; border: none; padding: 2px 8px; border-radius: 4px; cursor: pointer;">+</button>
+        <button onclick="cambiarCantidad('${item.key}', 1)" style="background: #d9381e; color: white; border: none; padding: 2px 8px; border-radius: 4px; cursor: pointer;">+</button>
       </div>
     `;
     cartList.appendChild(itemDiv);
@@ -275,14 +309,14 @@ function actualizarCarritoUI() {
 }
 
 // 5. CAMBIAR CANTIDAD (+ / -)
-function cambiarCantidad(id, cambio) {
-  const item = carrito.find(i => i.id === id);
+function cambiarCantidad(key, cambio) {
+  const item = carrito.find(i => i.key === key);
   if (!item) return;
 
   item.cantidad += cambio;
 
   if (item.cantidad <= 0) {
-    carrito = carrito.filter(i => i.id !== id);
+    carrito = carrito.filter(i => i.key !== key);
   }
 
   actualizarCarritoUI();
@@ -361,14 +395,14 @@ function toggleMobileCart() {
   }
 }
 
-// 8. ENVIAR PEDIDO A WHATSAPP
+// 8. ENVIAR PEDIDO A WHATSAPP (INCLUYE SABOR)
 function sendOrderWhatsApp() {
   if (carrito.length === 0) {
     alert("Agrega al menos un producto a tu pedido.");
     return;
   }
 
-  const telefonoWhatsApp = "525513774057";
+  const telefonoWhatsApp = "525648336057";
 
   let mensaje = "Hola *RAPIDITO SNACKS*, me gustaría realizar el siguiente pedido:\n\n";
 
@@ -376,7 +410,8 @@ function sendOrderWhatsApp() {
   carrito.forEach(item => {
     const subtotal = item.precio * item.cantidad;
     total += subtotal;
-    mensaje += `▪ ${item.cantidad}x ${item.nombre} - $${subtotal.toFixed(2)}\n`;
+    const detalleSabor = item.sabor ? ` _(Sabor: ${item.sabor})_` : '';
+    mensaje += `▪ ${item.cantidad}x ${item.nombre}${detalleSabor} - $${subtotal.toFixed(2)}\n`;
   });
 
   mensaje += `\n*Total a Pagar:* $${total.toFixed(2)}\n`;
