@@ -63,7 +63,7 @@
         <input type="text" id="search-input" placeholder="Buscar hamburguesa, alitas, postres...">
       </div>
 
-      <!-- BOTONES DE CATEGORÍAS SEGÚN TU LOGO -->
+      <!-- BOTONES DE CATEGORÍAS -->
       <nav class="category-scroll" id="categories-container">
         <button class="cat-btn active" data-category="todos">
           <span class="cat-emoji">🔥</span>
@@ -115,7 +115,6 @@
           <h3>🛒 Tu Pedido</h3>
           <span class="items-count" id="cart-count">0</span>
         </div>
-        <!-- BOTÓN PARA VOLVER AL MENÚ EN MÓVIL -->
         <button class="btn-close-cart" onclick="toggleMobileCart()">← Volver al menú</button>
       </div>
 
@@ -144,7 +143,7 @@
           </label>
         </div>
 
-        <!-- CAMPO Y BOTÓN DE UBICACIÓN (DESPLEGABLE AL ELEGIR DOMICILIO) -->
+        <!-- CAMPO DE DIRECCIÓN Y BOTÓN GPS -->
         <div id="delivery-address-container" style="display: none; margin-top: 10px;">
           <input type="text" id="client-address" placeholder="Calle, número, colonia..." style="width: 100%; padding: 8px; border-radius: 6px; border: 1px solid #333; background: #1a1a1a; color: #fff; font-size: 0.85rem; margin-bottom: 8px; box-sizing: border-box;">
           <button type="button" id="btn-gps" onclick="obtenerUbicacionGPS()" style="width: 100%; padding: 8px; background: #2a2a2a; color: #ffb703; border: 1px solid #ffb703; border-radius: 6px; font-size: 0.8rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 5px;">
@@ -176,6 +175,6 @@
     </button>
   </nav>
 
-  <script src="app.js?v=3.4"></script>
+  <script src="app.js"></script>
 </body>
 </html>
