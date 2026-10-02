@@ -516,6 +516,15 @@ function toggleAddressInput() {
   }
 }
 
+// --- MOSTRAR / OCULTAR CAMPO DE CAMBIO EN EFECTIVO ---
+function toggleCashAmountInput() {
+  const paymentMethod = document.getElementById("payment-method")?.value;
+  const cashContainer = document.getElementById("cash-change-container");
+  if (cashContainer) {
+    cashContainer.style.display = (paymentMethod === "Efectivo") ? "block" : "none";
+  }
+}
+
 // --- OBTENER UBICACIÓN GPS DEL USUARIO ---
 function obtenerUbicacionGPS() {
   const statusElem = document.getElementById("gps-status");
@@ -570,6 +579,8 @@ function sendOrderWhatsApp() {
 
   const telefonoWhatsApp = "525513774057";
   const deliveryType = document.querySelector('input[name="delivery-type"]:checked')?.value || "sucursal";
+  const metodoPago = document.getElementById("payment-method")?.value || "Efectivo";
+  const pagoConRaw = document.getElementById("cash-amount")?.value.trim();
 
   let mensaje = "Hola *RAPIDITO SNACKS*, me gustaría realizar el siguiente pedido:\n\n";
 
@@ -583,6 +594,7 @@ function sendOrderWhatsApp() {
 
   mensaje += `\n*Total a Pagar:* $${total.toFixed(2)}\n`;
 
+  // Detalle de entrega
   if (deliveryType === "domicilio") {
     const direccionTexto = document.getElementById("client-address")?.value.trim() || "";
     
@@ -592,14 +604,25 @@ function sendOrderWhatsApp() {
     }
 
     mensaje += `*Tipo de Pedido:* Entrega a domicilio 🛵\n`;
-    if (direccionTexto) {
-      mensaje += `*Dirección:* ${direccionTexto}\n`;
-    }
-    if (ubicacionGPS) {
-      mensaje += `*Ubicación GPS:* ${ubicacionGPS}\n`;
-    }
+    if (direccionTexto) mensaje += `*Dirección:* ${direccionTexto}\n`;
+    if (ubicacionGPS) mensaje += `*Ubicación GPS:* ${ubicacionGPS}\n`;
   } else {
     mensaje += `*Tipo de Pedido:* Para recoger en local 🛍️\n`;
+  }
+
+  // Detalle de método de pago
+  mensaje += `*Método de Pago:* ${metodoPago}\n`;
+  if (metodoPago === "Efectivo" && pagoConRaw) {
+    const montoEfectivo = parseFloat(pagoConRaw);
+    if (!isNaN(montoEfectivo)) {
+      const cambio = montoEfectivo - total;
+      mensaje += `*Paga con:* $${montoEfectivo.toFixed(2)}`;
+      if (cambio >= 0) {
+        mensaje += ` (Cambio: $${cambio.toFixed(2)})\n`;
+      } else {
+        mensaje += ` _(Monto insuficiente)_ \n`;
+      }
+    }
   }
 
   mensaje += "\n¡Muchas gracias!";
