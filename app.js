@@ -2,7 +2,6 @@
 // RAPIDITO SNACKS - LÓGICA Y BASE DE DATOS
 // ==========================================
 
-// 1. BASE DE DATOS DE PRODUCTOS (CON SABORES Y OPCIONES)
 const productos = [
   // --- COMBOS Y PROMOS ---
   {
@@ -191,7 +190,7 @@ const productos = [
     destacado: "Tradicional"
   },
 
-  // --- BEBIDAS Y REFRESCOS (TODOS UNIFICADOS BAJO "bebidas") ---
+  // --- BEBIDAS ---
   {
     id: 19,
     nombre: "Coca-Cola Original 335ml",
@@ -289,30 +288,17 @@ const productos = [
   }
 ];
 
-// Estado global del carrito y ubicación GPS
 let carrito = [];
 let ubicacionGPS = null;
 
-// 2. RENDERIZAR PRODUCTOS EN EL GRID
 function renderProductos(items) {
   const grid = document.getElementById("products-grid");
   if (!grid) return;
   grid.innerHTML = "";
 
-  if (items.length === 0) {
-    grid.innerHTML = `
-      <div style="grid-column: 1 / -1; text-align: center; padding: 40px 10px; color: var(--text-muted);">
-        <p style="font-size: 1.5rem;">🔍</p>
-        <p>No se encontraron productos en esta categoría.</p>
-      </div>
-    `;
-    return;
-  }
-
   items.forEach(prod => {
     if (prod.categoria === "promos" && items.length === productos.length) return;
 
-    // Generar Selector de Sabores si el producto los requiere
     let selectorSaboresHtml = "";
     if (prod.sabores && prod.sabores.length > 0) {
       selectorSaboresHtml = `
@@ -346,7 +332,6 @@ function renderProductos(items) {
   });
 }
 
-// 3. AGREGAR PRODUCTO AL CARRITO CON SABOR SELECCIONADO
 function addToCart(id) {
   const producto = productos.find(p => p.id === id);
   if (!producto) return;
@@ -371,7 +356,6 @@ function addToCart(id) {
   actualizarCarritoUI();
 }
 
-// 4. ACTUALIZAR INTERFAZ DEL CARRITO
 function actualizarCarritoUI() {
   const cartList = document.getElementById("cart-items-list");
   const cartCount = document.getElementById("cart-count");
@@ -420,13 +404,11 @@ function actualizarCarritoUI() {
   });
 }
 
-// 5. CAMBIAR CANTIDAD (+ / -)
 function cambiarCantidad(key, cambio) {
   const item = carrito.find(i => i.key === key);
   if (!item) return;
 
   item.cantidad += cambio;
-
   if (item.cantidad <= 0) {
     carrito = carrito.filter(i => i.key !== key);
   }
@@ -434,60 +416,6 @@ function cambiarCantidad(key, cambio) {
   actualizarCarritoUI();
 }
 
-// 6. INICIALIZACIÓN DE EVENTOS
-document.addEventListener("DOMContentLoaded", () => {
-  renderProductos(productos);
-  actualizarCarritoUI();
-
-  // Filtros por Categoría
-  const categoryButtons = document.querySelectorAll(".cat-btn");
-  categoryButtons.forEach(btn => {
-    btn.addEventListener("click", (e) => {
-      categoryButtons.forEach(b => b.classList.remove("active"));
-      
-      const currentBtn = e.currentTarget;
-      currentBtn.classList.add("active");
-
-      const cat = currentBtn.getAttribute("data-category");
-
-      if (cat === "todos") {
-        renderProductos(productos);
-      } else {
-        const filtrados = productos.filter(p => p.categoria === cat);
-        renderProductos(filtrados);
-      }
-    });
-  });
-
-  // Buscador en tiempo real
-  const searchInput = document.getElementById("search-input");
-  if (searchInput) {
-    searchInput.addEventListener("input", (e) => {
-      const texto = e.target.value.toLowerCase().trim();
-      const filtrados = productos.filter(p => 
-        p.nombre.toLowerCase().includes(texto) || 
-        p.descripcion.toLowerCase().includes(texto)
-      );
-      renderProductos(filtrados);
-    });
-  }
-
-  // Ajuste al redimensionar pantalla
-  window.addEventListener("resize", () => {
-    const sidebar = document.getElementById("cart-sidebar");
-    if (sidebar && window.innerWidth >= 900) {
-      sidebar.style.display = "";
-      sidebar.style.position = "";
-      sidebar.style.top = "";
-      sidebar.style.left = "";
-      sidebar.style.width = "";
-      sidebar.style.height = "";
-      sidebar.style.zIndex = "";
-    }
-  });
-});
-
-// 7. ABRIR / CERRAR CARRITO EN MÓVIL
 function toggleMobileCart() {
   const sidebar = document.getElementById("cart-sidebar");
   if (!sidebar) return;
@@ -507,7 +435,6 @@ function toggleMobileCart() {
   }
 }
 
-// --- MOSTRAR / OCULTAR CAMPO DE DIRECCIÓN ---
 function toggleAddressInput() {
   const isDomicilio = document.querySelector('input[name="delivery-type"][value="domicilio"]')?.checked;
   const addressContainer = document.getElementById("delivery-address-container");
@@ -516,7 +443,6 @@ function toggleAddressInput() {
   }
 }
 
-// --- OBTENER UBICACIÓN GPS DEL USUARIO ---
 function obtenerUbicacionGPS() {
   const statusElem = document.getElementById("gps-status");
   const btnGps = document.getElementById("btn-gps");
@@ -561,14 +487,13 @@ function obtenerUbicacionGPS() {
   );
 }
 
-// 8. ENVIAR PEDIDO A WHATSAPP
 function sendOrderWhatsApp() {
   if (carrito.length === 0) {
     alert("Agrega al menos un producto a tu pedido.");
     return;
   }
 
-  const telefonoWhatsApp = "525648336057";
+  const telefonoWhatsApp = "525513774057";
   const deliveryType = document.querySelector('input[name="delivery-type"]:checked')?.value || "sucursal";
 
   let mensaje = "Hola *RAPIDITO SNACKS*, me gustaría realizar el siguiente pedido:\n\n";
@@ -592,12 +517,8 @@ function sendOrderWhatsApp() {
     }
 
     mensaje += `*Tipo de Pedido:* Entrega a domicilio 🛵\n`;
-    if (direccionTexto) {
-      mensaje += `*Dirección:* ${direccionTexto}\n`;
-    }
-    if (ubicacionGPS) {
-      mensaje += `*Ubicación GPS:* ${ubicacionGPS}\n`;
-    }
+    if (direccionTexto) mensaje += `*Dirección:* ${direccionTexto}\n`;
+    if (ubicacionGPS) mensaje += `*Ubicación GPS:* ${ubicacionGPS}\n`;
   } else {
     mensaje += `*Tipo de Pedido:* Para recoger en local 🛍️\n`;
   }
@@ -607,3 +528,39 @@ function sendOrderWhatsApp() {
   const url = `https://wa.me/${telefonoWhatsApp}?text=${encodeURIComponent(mensaje)}`;
   window.open(url, "_blank");
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  renderProductos(productos);
+  actualizarCarritoUI();
+
+  const categoryButtons = document.querySelectorAll(".cat-btn");
+  categoryButtons.forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      categoryButtons.forEach(b => b.classList.remove("active"));
+      
+      const currentBtn = e.currentTarget;
+      currentBtn.classList.add("active");
+
+      const cat = currentBtn.getAttribute("data-category");
+
+      if (cat === "todos") {
+        renderProductos(productos);
+      } else {
+        const filtrados = productos.filter(p => p.categoria === cat);
+        renderProductos(filtrados);
+      }
+    });
+  });
+
+  const searchInput = document.getElementById("search-input");
+  if (searchInput) {
+    searchInput.addEventListener("input", (e) => {
+      const texto = e.target.value.toLowerCase().trim();
+      const filtrados = productos.filter(p => 
+        p.nombre.toLowerCase().includes(texto) || 
+        p.descripcion.toLowerCase().includes(texto)
+      );
+      renderProductos(filtrados);
+    });
+  }
+});
