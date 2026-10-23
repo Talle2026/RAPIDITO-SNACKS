@@ -199,6 +199,26 @@ const productos = [
     imagen: "https://images.unsplash.com/photo-1517433670267-08bbd4be890f?w=400",
     destacado: "Tradicional"
   },
+  {
+    id: 28,
+    nombre: "Plátanos Fritos",
+    categoria: "postres",
+    precio: 50,
+    descripcion: "Plátanos maduros fritos en su punto, doraditos y dulces.",
+    imagen: "https://images.unsplash.com/photo-1528825871115-3581a5387919?w=400",
+    destacado: "🍌 Tradicional",
+    sabores: ["Con Crema", "Con Lechera", "Con Mermelada", "Crema y Lechera", "Mixtos / Todo"]
+  },
+  {
+    id: 29,
+    nombre: "Plátanos Capeados",
+    categoria: "postres",
+    precio: 55,
+    descripcion: "Deliciosos plátanos cubiertos con un capeado crujiente y doradito.",
+    imagen: "https://images.unsplash.com/photo-1528825871115-3581a5387919?w=400",
+    destacado: "⭐ Especialidad",
+    sabores: ["Con Crema", "Con Lechera", "Con Mermelada", "Crema y Lechera", "Mixtos / Todo"]
+  },
 
   // --- BEBIDAS ---
   {
@@ -313,7 +333,7 @@ function renderProductos(items) {
     if (prod.sabores && prod.sabores.length > 0) {
       selectorSaboresHtml = `
         <div style="margin: 8px 0;">
-          <label style="font-size: 0.75rem; color: #aaa; display: block; margin-bottom: 3px;">Sabor / Variedad:</label>
+          <label style="font-size: 0.75rem; color: #aaa; display: block; margin-bottom: 3px;">Complemento / Sabor:</label>
           <select id="sabor-${prod.id}" style="width: 100%; background: #1a1a1a; color: #fff; border: 1px solid #333; padding: 6px; border-radius: 6px; font-size: 0.8rem;">
             ${prod.sabores.map(sabor => `<option value="${sabor}">${sabor}</option>`).join('')}
           </select>
@@ -396,7 +416,7 @@ function actualizarCarritoUI() {
     const itemDiv = document.createElement("div");
     itemDiv.style.cssText = "display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; background: #121212; padding: 8px; border-radius: 8px;";
     
-    const detalleSabor = item.sabor ? `<span style="font-size: 0.72rem; color: #ffb703; display: block;">Sabor: ${item.sabor}</span>` : '';
+    const detalleSabor = item.sabor ? `<span style="font-size: 0.72rem; color: #ffb703; display: block;">Complemento: ${item.sabor}</span>` : '';
 
     itemDiv.innerHTML = `
       <div style="flex: 1; padding-right: 8px;">
@@ -522,7 +542,7 @@ function sendOrderWhatsApp() {
   carrito.forEach(item => {
     const subtotal = item.precio * item.cantidad;
     total += subtotal;
-    const detalleSabor = item.sabor ? ` _(Sabor: ${item.sabor})_` : '';
+    const detalleSabor = item.sabor ? ` _(Complemento: ${item.sabor})_` : '';
     mensaje += `▪ ${item.cantidad}x ${item.nombre}${detalleSabor} - $${subtotal.toFixed(2)}\n`;
   });
 
