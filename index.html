@@ -44,7 +44,7 @@
           <div class="promo-content">
             <div class="promo-info">
               <h2>3 KILOS DE ALITAS</h2>
-              <p>3 kilos de alitas jugosas con salsa a elegir (BBQ, Mango Habanero, Búfalo, Tamarindo, Hot).</p>
+              <p>3 kilos de alitas jugosas con salsa a elegir (BBQ, Mango Habanero, Búfalo, Tamarindo, Hot, Original).</p>
               <div class="promo-footer">
                 <span class="promo-price">$500.00</span>
                 <button class="btn-add-promo" onclick="addToCart(101)">+ Agregar</button>
@@ -152,6 +152,21 @@
           <small id="gps-status" style="display: block; font-size: 0.75rem; color: #aaa; margin-top: 4px; text-align: center;"></small>
         </div>
 
+        <!-- MÉTODO DE PAGO -->
+        <div style="margin-top: 12px;">
+          <label style="font-size: 0.75rem; color: #aaa; display: block; margin-bottom: 4px;">Método de Pago:</label>
+          <select id="payment-method" style="width: 100%; padding: 8px; border-radius: 6px; border: 1px solid #333; background: #1a1a1a; color: #fff; font-size: 0.85rem;" onchange="toggleCashAmountInput()">
+            <option value="Efectivo">💵 Efectivo</option>
+            <option value="Transferencia">📱 Transferencia (BBVA / Spin)</option>
+            <option value="Tarjeta">💳 Tarjeta (Terminal)</option>
+          </select>
+        </div>
+
+        <!-- CAMPO PARA CAMBIO EN EFECTIVO -->
+        <div id="cash-change-container" style="margin-top: 8px;">
+          <input type="number" id="cash-amount" placeholder="¿Con cuánto pagas? (ej. 200, 500)" style="width: 100%; padding: 8px; border-radius: 6px; border: 1px solid #333; background: #1a1a1a; color: #fff; font-size: 0.85rem; box-sizing: border-box;">
+        </div>
+
         <button class="btn-send-whatsapp" onclick="sendOrderWhatsApp()" style="margin-top: 12px;">
           📱 Enviar Pedido por WhatsApp
         </button>
@@ -175,6 +190,6 @@
     </button>
   </nav>
 
-  <script src="app.js"></script>
+  <script src="app.js?v=6.0"></script>
 </body>
 </html>
