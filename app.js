@@ -1,38 +1,108 @@
 // ==========================================
-// RAPIDITO SNACKS - LÓGICA Y BASE DE DATOS
+// LA ESTACIÓN DEL TRAGO - LÓGICA Y BASE DE DATOS
 // ==========================================
 
 const productos = [
-  // --- COMBOS Y PROMOS ---
+  // --- BEBIDAS Y COCTELERÍA (PROTAGONISTAS) ---
   {
-    id: 101,
-    nombre: "3 Kilos de Alitas",
-    categoria: "promos",
-    precio: 500,
-    descripcion: "3 kilos de alitas jugosas con salsa a elegir.",
-    imagen: "https://images.unsplash.com/photo-1567620832903-9fc6debc209f?w=400",
-    destacado: "🔥 Para Compartir",
-    sabores: ["BBQ", "Mango Habanero", "Búfalo", "Tamarindo", "Hot", "Original"]
+    id: 13,
+    nombre: "Mojito Artesanal de la Estación (1 pza)",
+    categoria: "bebidas",
+    precio: 100,
+    descripcion: "Refrescante mojito preparado con hierbabuena fresca y toque secreto.",
+    imagen: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=300",
+    destacado: "⭐ Estrella de la Barra",
+    sabores: ["Mango", "Frutos Rojos", "Mora Azul", "Clásico"]
+  },
+  {
+    id: 14,
+    nombre: "Par de Mojitos (2 x $180)",
+    categoria: "bebidas",
+    precio: 180,
+    descripcion: "Lánzate con dos mojitos artesanales al mejor precio.",
+    imagen: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=300",
+    destacado: "🔥 2x Favorito",
+    sabores: ["2x Mango", "2x Frutos Rojos", "2x Mora Azul", "1 Mango + 1 Frutos Rojos", "1 Mango + 1 Mora Azul", "1 Frutos Rojos + 1 Mora Azul"]
   },
   {
     id: 102,
-    nombre: "Promo 3 Mojitos",
+    nombre: "Combo Tren Nocturno (3 Mojitos)",
     categoria: "promos",
     precio: 250,
-    descripcion: "3 Mojitos refrescantes a precio especial.",
+    descripcion: "3 Mojitos refrescantes ideales para compartir en el andén.",
     imagen: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=400",
-    destacado: "🍹 Promo Bebidas",
+    destacado: "🍹 Promo Tragos",
     sabores: ["Mango", "Frutos Rojos", "Mora Azul", "Combinados"]
   },
   {
-    id: 103,
-    nombre: "Combo Mojito + Hamburguesa Sencilla",
+    id: 19,
+    nombre: "Coca-Cola Original 335ml",
+    categoria: "bebidas",
+    precio: 30,
+    descripcion: "Lata fría de Coca-Cola sabor original 335ml.",
+    imagen: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300",
+    destacado: "Fría"
+  },
+  {
+    id: 20,
+    nombre: "Sprite 335ml",
+    categoria: "bebidas",
+    precio: 30,
+    descripcion: "Refresco sabor lima-limón en lata bien fría.",
+    imagen: "https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?w=300",
+    destacado: ""
+  },
+  {
+    id: 21,
+    nombre: "Jarrito",
+    categoria: "bebidas",
+    precio: 30,
+    descripcion: "Tradicional refresco Jarrito del sabor de tu elección.",
+    imagen: "https://images.unsplash.com/photo-1581006852262-e4307cf6283a?w=300",
+    destacado: "Sazones de México",
+    sabores: ["Mandarina", "Tamarindo", "Toronja", "Limón", "Fruit Punch"]
+  },
+  {
+    id: 23,
+    nombre: "Boing",
+    categoria: "bebidas",
+    precio: 30,
+    descripcion: "Delicioso jugo de fruta Boing sabor a elegir.",
+    imagen: "https://images.unsplash.com/photo-1546173159-315724a31696?w=300",
+    destacado: "Fruta Real",
+    sabores: ["Mango", "Guayaba", "Durazno", "Uva", "Manzana"]
+  },
+  {
+    id: 24,
+    nombre: "Té Arizona",
+    categoria: "bebidas",
+    precio: 30,
+    descripcion: "Lata de Té Arizona helado sabor a elegir.",
+    imagen: "https://images.unsplash.com/photo-1556881286-fc6915169721?w=300",
+    destacado: "Helado",
+    sabores: ["Té Verde con Miel", "Sandía", "Mango (Mucho Mango)", "Té Negro con Limón", "Fruit Punch"]
+  },
+
+  // --- ALITAS Y COMBOS ---
+  {
+    id: 101,
+    nombre: "3 Kilos de Alitas Estación",
     categoria: "promos",
-    precio: 150,
-    descripcion: "1 Hamburguesa Sencilla + 1 Mojito del sabor de tu elección.",
-    imagen: "https://images.unsplash.com/photo-1561758033-d89a9ad46330?w=400",
-    destacado: "⭐ Paquete Individual",
-    sabores: ["Mojito Mango", "Mojito Frutos Rojos", "Mojito Mora Azul"]
+    precio: 500,
+    descripcion: "3 kilos de alitas jugosas con salsa a elegir para equipaje pesado.",
+    imagen: "https://images.unsplash.com/photo-1567620832903-9fc6debc209f?w=400",
+    destacado: "🔥 Para el Grupo",
+    sabores: ["BBQ", "Mango Habanero", "Búfalo", "Tamarindo", "Hot", "Original"]
+  },
+  {
+    id: 12,
+    nombre: "Orden de Alitas Fuego y Sabor",
+    categoria: "alitas",
+    precio: 110,
+    descripcion: "Alitas crujientes preparadas con la salsa de tu elección.",
+    imagen: "https://images.unsplash.com/photo-1567620832903-9fc6debc209f?w=300",
+    destacado: "Salsas Variadas",
+    sabores: ["BBQ", "Mango Habanero", "Búfalo", "Tamarindo Habanero", "Fuego", "Original"]
   },
 
   // --- HAMBURGUESAS ---
@@ -102,7 +172,7 @@ const productos = [
     destacado: "3x $130"
   },
 
-  // --- NACHOS Y SNACKS ---
+  // --- SNACKS ---
   {
     id: 8,
     nombre: "Nachos Especiales con Carne",
@@ -126,7 +196,7 @@ const productos = [
     nombre: "Nachos Especiales Campechanos",
     categoria: "snacks",
     precio: 70,
-    descripcion: "Totopos con queso, mezcla de carne y longaniza ¡lo mejor de dos mundos!",
+    descripcion: "Totopos con queso, mezcla de carne y longaniza.",
     imagen: "https://images.unsplash.com/photo-1513456852971-30c0b8199d4d?w=300",
     destacado: "🔥 El Más Pedido"
   },
@@ -138,18 +208,6 @@ const productos = [
     descripcion: "Orden de papas fritas doraditas y crujientes.",
     imagen: "https://images.unsplash.com/photo-1576107232684-1279f3908594?w=300",
     destacado: ""
-  },
-
-  // --- ALITAS ---
-  {
-    id: 12,
-    nombre: "Orden de Alitas Fuego y Sabor",
-    categoria: "alitas",
-    precio: 110,
-    descripcion: "Alitas crujientes preparadas con la salsa de tu elección.",
-    imagen: "https://images.unsplash.com/photo-1567620832903-9fc6debc209f?w=300",
-    destacado: "Salsas Variadas",
-    sabores: ["BBQ", "Mango Habanero", "Búfalo", "Tamarindo Habanero", "Fuego", "Original"]
   },
 
   // --- POSTRES ---
@@ -188,103 +246,6 @@ const productos = [
     descripcion: "Cremoso arroz con leche espolvoreado con canela.",
     imagen: "https://images.unsplash.com/photo-1517433670267-08bbd4be890f?w=400",
     destacado: "Tradicional"
-  },
-
-  // --- BEBIDAS ---
-  {
-    id: 19,
-    nombre: "Coca-Cola Original 335ml",
-    categoria: "bebidas",
-    precio: 30,
-    descripcion: "Lata fría de Coca-Cola sabor original 335ml.",
-    imagen: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300",
-    destacado: "Fría"
-  },
-  {
-    id: 25,
-    nombre: "Coca-Cola Sin Azúcar 335ml",
-    categoria: "bebidas",
-    precio: 30,
-    descripcion: "Lata fría de Coca-Cola Sin Azúcar 335ml.",
-    imagen: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300",
-    destacado: "Sin Azúcar"
-  },
-  {
-    id: 26,
-    nombre: "Coca-Cola Zero 335ml",
-    categoria: "bebidas",
-    precio: 30,
-    descripcion: "Lata fría de Coca-Cola Zero 335ml.",
-    imagen: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300",
-    destacado: "Zero"
-  },
-  {
-    id: 20,
-    nombre: "Sprite 335ml",
-    categoria: "bebidas",
-    precio: 30,
-    descripcion: "Refresco sabor lima-limón en lata bien fría.",
-    imagen: "https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?w=300",
-    destacado: ""
-  },
-  {
-    id: 21,
-    nombre: "Jarrito",
-    categoria: "bebidas",
-    precio: 30,
-    descripcion: "Tradicional refresco Jarrito del sabor de tu elección.",
-    imagen: "https://images.unsplash.com/photo-1581006852262-e4307cf6283a?w=300",
-    destacado: "Sazones de México",
-    sabores: ["Mandarina", "Tamarindo", "Toronja", "Limón", "Fruit Punch"]
-  },
-  {
-    id: 22,
-    nombre: "Manzanita Sol",
-    categoria: "bebidas",
-    precio: 30,
-    descripcion: "Refresco clásico sabor manzana.",
-    imagen: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300",
-    destacado: ""
-  },
-  {
-    id: 23,
-    nombre: "Boing",
-    categoria: "bebidas",
-    precio: 30,
-    descripcion: "Delicioso jugo de fruta Boing sabor a elegir.",
-    imagen: "https://images.unsplash.com/photo-1546173159-315724a31696?w=300",
-    destacado: "Fruta Real",
-    sabores: ["Mango", "Guayaba", "Durazno", "Uva", "Manzana"]
-  },
-  {
-    id: 24,
-    nombre: "Té Arizona",
-    categoria: "bebidas",
-    precio: 30,
-    descripcion: "Lata de Té Arizona helado sabor a elegir.",
-    imagen: "https://images.unsplash.com/photo-1556881286-fc6915169721?w=300",
-    destacado: "Helado",
-    sabores: ["Té Verde con Miel", "Sandía", "Mango (Mucho Mango)", "Té Negro con Limón", "Fruit Punch"]
-  },
-  {
-    id: 13,
-    nombre: "Mojito Individual (1 pza)",
-    categoria: "bebidas",
-    precio: 100,
-    descripcion: "Refrescante mojito preparado.",
-    imagen: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=300",
-    destacado: "",
-    sabores: ["Mango", "Frutos Rojos", "Mora Azul"]
-  },
-  {
-    id: 14,
-    nombre: "2 Mojitos x $180",
-    categoria: "bebidas",
-    precio: 180,
-    descripcion: "2 Mojitos preparados a elegir.",
-    imagen: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=300",
-    destacado: "Par de Mojitos",
-    sabores: ["2x Mango", "2x Frutos Rojos", "2x Mora Azul", "1 Mango + 1 Frutos Rojos", "1 Mango + 1 Mora Azul", "1 Frutos Rojos + 1 Mora Azul"]
   }
 ];
 
@@ -315,7 +276,7 @@ function renderProductos(items) {
     article.className = "product-card";
     article.innerHTML = `
       <div class="card-img-wrap">
-        <img src="${prod.imagen}" alt="${prod.nombre}" loading="lazy" onerror="this.src='https://via.placeholder.com/300x200?text=Rapidito+Snacks'">
+        <img src="${prod.imagen}" alt="${prod.nombre}" loading="lazy" onerror="this.src='https://via.placeholder.com/300x200?text=La+Estacion'">
         ${prod.destacado ? `<span class="card-tag">${prod.destacado}</span>` : ''}
       </div>
       <div class="card-body">
@@ -324,7 +285,7 @@ function renderProductos(items) {
         ${selectorSaboresHtml}
         <div class="card-action">
           <span class="price">$${prod.precio.toFixed(2)}</span>
-          <button class="btn-add-item" onclick="addToCart(${prod.id})">+ Pedir</button>
+          <button class="btn-add-item" onclick="addToCart(${prod.id})">+ Abordar</button>
         </div>
       </div>
     `;
@@ -374,8 +335,8 @@ function actualizarCarritoUI() {
   if (carrito.length === 0) {
     cartList.innerHTML = `
       <div class="empty-state">
-        <span>🍽️</span>
-        <p>Aún no has agregado delicias a tu pedido.</p>
+        <span>🍸</span>
+        <p>Tu barra está vacía. ¡Agrega algo para arrancar!</p>
       </div>
     `;
     return;
@@ -397,7 +358,7 @@ function actualizarCarritoUI() {
       <div style="display: flex; gap: 5px; align-items: center;">
         <button onclick="cambiarCantidad('${item.key}', -1)" style="background: #2a2a2a; color: white; border: none; padding: 2px 8px; border-radius: 4px; cursor: pointer;">-</button>
         <span style="font-size: 0.85rem; width: 16px; text-align: center;">${item.cantidad}</span>
-        <button onclick="cambiarCantidad('${item.key}', 1)" style="background: #d9381e; color: white; border: none; padding: 2px 8px; border-radius: 4px; cursor: pointer;">+</button>
+        <button onclick="cambiarCantidad('${item.key}', 1)" style="background: #1d3557; color: white; border: none; padding: 2px 8px; border-radius: 4px; cursor: pointer;">+</button>
       </div>
     `;
     cartList.appendChild(itemDiv);
@@ -440,6 +401,14 @@ function toggleAddressInput() {
   const addressContainer = document.getElementById("delivery-address-container");
   if (addressContainer) {
     addressContainer.style.display = isDomicilio ? "block" : "none";
+  }
+}
+
+function toggleCashAmountInput() {
+  const paymentMethod = document.getElementById("payment-method")?.value;
+  const cashContainer = document.getElementById("cash-change-container");
+  if (cashContainer) {
+    cashContainer.style.display = (paymentMethod === "Efectivo") ? "block" : "none";
   }
 }
 
@@ -489,14 +458,16 @@ function obtenerUbicacionGPS() {
 
 function sendOrderWhatsApp() {
   if (carrito.length === 0) {
-    alert("Agrega al menos un producto a tu pedido.");
+    alert("Agrega al menos un producto a tu equipaje.");
     return;
   }
 
-  const telefonoWhatsApp = "+525648336057";
+  const telefonoWhatsApp = "525648336057";
   const deliveryType = document.querySelector('input[name="delivery-type"]:checked')?.value || "sucursal";
+  const metodoPago = document.getElementById("payment-method")?.value || "Efectivo";
+  const pagoConRaw = document.getElementById("cash-amount")?.value.trim();
 
-  let mensaje = "Hola *RAPIDITO SNACKS*, me gustaría realizar el siguiente pedido:\n\n";
+  let mensaje = "🚂 Hola *LA ESTACIÓN DEL TRAGO*, quiero abordar el siguiente pedido:\n\n";
 
   let total = 0;
   carrito.forEach(item => {
@@ -506,7 +477,7 @@ function sendOrderWhatsApp() {
     mensaje += `▪ ${item.cantidad}x ${item.nombre}${detalleSabor} - $${subtotal.toFixed(2)}\n`;
   });
 
-  mensaje += `\n*Total a Pagar:* $${total.toFixed(2)}\n`;
+  mensaje += `\n*Total del Viaje:* $${total.toFixed(2)}\n`;
 
   if (deliveryType === "domicilio") {
     const direccionTexto = document.getElementById("client-address")?.value.trim() || "";
@@ -516,18 +487,41 @@ function sendOrderWhatsApp() {
       return;
     }
 
-    mensaje += `*Tipo de Pedido:* Entrega a domicilio 🛵\n`;
+    mensaje += `*Tipo de Viaje:* Envío a Domicilio 🛵\n`;
     if (direccionTexto) mensaje += `*Dirección:* ${direccionTexto}\n`;
     if (ubicacionGPS) mensaje += `*Ubicación GPS:* ${ubicacionGPS}\n`;
   } else {
-    mensaje += `*Tipo de Pedido:* Para recoger en local 🛍️\n`;
+    mensaje += `*Tipo de Viaje:* Recoger en el Andén 🛍️\n`;
   }
 
-  mensaje += "\n¡Muchas gracias!";
+  mensaje += `*Método de Pago:* ${metodoPago}\n`;
+  if (metodoPago === "Efectivo" && pagoConRaw) {
+    const montoEfectivo = parseFloat(pagoConRaw);
+    if (!isNaN(montoEfectivo)) {
+      const cambio = montoEfectivo - total;
+      mensaje += `*Paga con:* $${montoEfectivo.toFixed(2)}`;
+      if (cambio >= 0) {
+        mensaje += ` (Cambio: $${cambio.toFixed(2)})\n`;
+      } else {
+        mensaje += ` _(Monto insuficiente)_\n`;
+      }
+    }
+  }
+
+  mensaje += "\n¡Buen viaje!";
 
   const url = `https://wa.me/${telefonoWhatsApp}?text=${encodeURIComponent(mensaje)}`;
   window.open(url, "_blank");
 }
+
+// Exponer funciones globales
+window.addToCart = addToCart;
+window.cambiarCantidad = cambiarCantidad;
+window.toggleMobileCart = toggleMobileCart;
+window.toggleAddressInput = toggleAddressInput;
+window.toggleCashAmountInput = toggleCashAmountInput;
+window.obtenerUbicacionGPS = obtenerUbicacionGPS;
+window.sendOrderWhatsApp = sendOrderWhatsApp;
 
 document.addEventListener("DOMContentLoaded", () => {
   renderProductos(productos);
