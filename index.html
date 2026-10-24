@@ -75,3 +75,122 @@
         <button class="cat-btn active" data-category="todos">
           <span class="cat-emoji">🔥</span>
           <span class="cat-text">Todo</span>
+        </button>
+        <button class="cat-btn" data-category="hamburguesas">
+          <span class="cat-emoji">🍔</span>
+          <span class="cat-text">Hamburguesas</span>
+        </button>
+        <button class="cat-btn" data-category="hotdogs">
+          <span class="cat-emoji">🌭</span>
+          <span class="cat-text">Hot Dogs</span>
+        </button>
+        <button class="cat-btn" data-category="snacks">
+          <span class="cat-emoji">🍟</span>
+          <span class="cat-text">Nachos & Snacks</span>
+        </button>
+        <button class="cat-btn" data-category="alitas">
+          <span class="cat-emoji">🍗</span>
+          <span class="cat-text">Alitas</span>
+        </button>
+        <button class="cat-btn" data-category="postres">
+          <span class="cat-emoji">🍰</span>
+          <span class="cat-text">Postres</span>
+        </button>
+        <button class="cat-btn" data-category="bebidas">
+          <span class="cat-emoji">🥤</span>
+          <span class="cat-text">Bebidas</span>
+        </button>
+      </nav>
+
+      <!-- CONTENEDOR DE PRODUCTOS -->
+      <section class="products-section">
+        <div class="products-grid" id="products-grid">
+          <!-- Los productos se cargan dinámicamente desde app.js -->
+        </div>
+      </section>
+
+    </div>
+
+    <!-- BARRA LATERAL / CARRITO (Móvil y Escritorio) -->
+    <aside class="cart-sidebar" id="cart-sidebar">
+      <div class="cart-header">
+        <h2>Tu Pedido</h2>
+        <button class="close-cart-btn" onclick="toggleMobileCart()">✕</button>
+      </div>
+
+      <div class="cart-items-list" id="cart-items-list">
+        <div class="empty-state">
+          <span>🍽️</span>
+          <p>Aún no has agregado delicias a tu pedido.</p>
+        </div>
+      </div>
+
+      <!-- OPCIONES DE ENTREGA -->
+      <div class="delivery-options-card">
+        <h3>¿Cómo deseas tu pedido?</h3>
+        <label class="delivery-radio">
+          <input type="radio" name="delivery-type" value="sucursal" checked onchange="toggleAddressInput()">
+          <span>🛍️ Pasar a recoger (Sucursal)</span>
+        </label>
+        <label class="delivery-radio">
+          <input type="radio" name="delivery-type" value="domicilio" onchange="toggleAddressInput()">
+          <span>🛵 Envío a domicilio</span>
+        </label>
+      </div>
+
+      <!-- DIRECCIÓN Y GPS (Oculto por defecto) -->
+      <div id="delivery-address-container" style="display: none; padding: 0 15px 15px 15px;">
+        <div class="form-group" style="margin-bottom: 10px;">
+          <label style="font-size: 0.8rem; color: #aaa; display: block; margin-bottom: 4px;">Calle, Número y Colonia:</label>
+          <input type="text" id="client-address" placeholder="Ej. Calle Morelos #123, Centro" style="width: 100%; background: #1a1a1a; color: #fff; border: 1px solid #333; padding: 8px; border-radius: 8px; font-size: 0.85rem;">
+        </div>
+        <div class="form-group">
+          <button type="button" id="btn-gps" onclick="obtenerUbicacionGPS()" style="width: 100%; background: #2a2a2a; color: #ffb703; border: 1px dashed #ffb703; padding: 8px; border-radius: 8px; font-size: 0.8rem; cursor: pointer;">
+            📍 Usar mi ubicación actual (GPS)
+          </button>
+          <span id="gps-status" style="font-size: 0.72rem; color: #aaa; display: block; margin-top: 4px; text-align: center;"></span>
+        </div>
+      </div>
+
+      <!-- MÉTODO DE PAGO -->
+      <div class="payment-options-card" style="padding: 0 15px 15px 15px;">
+        <h3 style="font-size: 0.9rem; margin-bottom: 8px; color: #fff;">Método de Pago</h3>
+        <select id="payment-method" onchange="toggleCashAmountInput()" style="width: 100%; background: #1a1a1a; color: #fff; border: 1px solid #333; padding: 8px; border-radius: 8px; font-size: 0.85rem;">
+          <option value="Efectivo">Efectivo</option>
+          <option value="Transferencia">Transferencia Bancaria</option>
+        </select>
+      </div>
+
+      <!-- CAMBIO EN EFECTIVO -->
+      <div id="cash-change-container" style="padding: 0 15px 15px 15px;">
+        <div class="form-group">
+          <label style="font-size: 0.8rem; color: #aaa; display: block; margin-bottom: 4px;">¿Con cuánto vas a pagar? (Para calcular cambio):</label>
+          <input type="number" id="cash-amount" placeholder="Ej. 200" style="width: 100%; background: #1a1a1a; color: #fff; border: 1px solid #333; padding: 8px; border-radius: 8px; font-size: 0.85rem;">
+        </div>
+      </div>
+
+      <!-- FOOTER DEL CARRITO -->
+      <div class="cart-footer">
+        <div class="cart-total">
+          <span>Total:</span>
+          <span id="total-val">$0.00</span>
+        </div>
+        <button class="btn-whatsapp-order" onclick="sendOrderWhatsApp()">
+          📲 Enviar Pedido por WhatsApp
+        </button>
+      </div>
+    </aside>
+
+  </div>
+
+  <!-- BOTÓN FLOTANTE MÓVIL PARA ABRIR CARRITO -->
+  <div class="mobile-cart-float" onclick="toggleMobileCart()">
+    <span class="float-icon">🛒</span>
+    <span class="float-text">Ver Pedido</span>
+    <span class="float-badge" id="mobile-cart-badge">0</span>
+  </div>
+
+  <!-- SCRIPT PRINCIPAL CON CONTROL DE CACHÉ -->
+  <script src="app.js?v=8.0"></script>
+</body>
+</html>
