@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>La Estación del Trago - Menú de Bebidas</title>
+
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#1b263b">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="theme-rapidito">
+
+  <div class="app-layout">
+    <div class="main-content">
+
+      <header class="app-header">
+        <div class="brand-container">
+          <div class="brand-titles">
+            <h1 class="brand-title">LA ESTACIÓN</h1>
+            <span class="brand-subtitle">DEL TRAGO • COCTELERÍA & MICHES</span>
+          </div>
+        </div>
+        <div class="status-badge">
+          <span class="status-dot"></span> Barra Abierta
+        </div>
+      </header>
+
+      <section class="hero-promo">
+        <div class="promo-card">
+          <span class="promo-badge">🔥 Promo de la Estación</span>
+          <div class="promo-content">
+            <div class="promo-info">
+              <h2>PAR DE TRAGOS X $180</h2>
+              <p>Pide cualesquiera 2 bebidas preparadas de la barra por solo $180.00.</p>
+              <div class="promo-footer">
+                <span class="promo-price">$180.00</span>
+                <button class="btn-add-promo" onclick="addToCart(200)">+ Pedir Par</button>
+              </div>
+            </div>
+            <div class="promo-thumb">
+              <img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=400" alt="Promo Barra">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="products-section">
+        <div class="section-title-wrap">
+          <h2>🍹 Barra de Especialidades</h2>
+        </div>
+        <div class="products-grid" id="products-grid">
+        </div>
+      </section>
+
+    </div>
+
+    <aside class="cart-sidebar" id="cart-sidebar">
+      <div class="cart-header">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <h3>🍸 Tu Barra</h3>
+          <span class="items-count" id="cart-count">0</span>
+        </div>
+        <button class="btn-close-cart" onclick="toggleMobileCart()">← Volver a la barra</button>
+      </div>
+
+      <div class="cart-list" id="cart-items-list">
+        <div class="empty-state">
+          <span>🍹</span>
+          <p>Tu orden está vacía. ¡Elige tus bebidas favoritas!</p>
+        </div>
+      </div>
+
+      <div class="cart-footer">
+        <div class="total-row">
+          <span>Total:</span>
+          <strong id="total-val">$0.00</strong>
+        </div>
+
+        <div class="delivery-options">
+          <label>
+            <input type="radio" name="delivery-type" value="sucursal" checked onchange="toggleAddressInput()">
+            <span>Para recoger</span>
+          </label>
+          <label>
+            <input type="radio" name="delivery-type" value="domicilio" onchange="toggleAddressInput()">
+            <span>Domicilio</span>
+          </label>
+        </div>
+
+        <div id="delivery-address-container" style="display: none; margin-top: 10px;">
+          <input type="text" id="client-address" placeholder="Calle, número, colonia..." style="width: 100%; padding: 8px; border-radius: 6px; border: 1px solid #333; background: #1a1a1a; color: #fff; font-size: 0.85rem; margin-bottom: 8px; box-sizing: border-box;">
+          <button type="button" id="btn-gps" onclick="obtenerUbicacionGPS()" style="width: 100%; padding: 8px; background: #2a2a2a; color: #ffb703; border: 1px solid #ffb703; border-radius: 6px; font-size: 0.8rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 5px;">
+            📍 Usar mi ubicación actual (GPS)
+          </button>
+          <small id="gps-status" style="display: block; font-size: 0.75rem; color: #aaa; margin-top: 4px; text-align: center;"></small>
+        </div>
+
+        <div style="margin-top: 12px;">
+          <label style="font-size: 0.75rem; color: #aaa; display: block; margin-bottom: 4px;">Método de Pago:</label>
+          <select id="payment-method" style="width: 100%; padding: 8px; border-radius: 6px; border: 1px solid #333; background: #1a1a1a; color: #fff; font-size: 0.85rem;" onchange="toggleCashAmountInput()">
+            <option value="Efectivo">💵 Efectivo</option>
+            <option value="Transferencia">📱 Transferencia (BBVA / Spin)</option>
+            <option value="Tarjeta">💳 Tarjeta (Terminal)</option>
+          </select>
+        </div>
+
+        <div id="cash-change-container" style="margin-top: 8px;">
+          <input type="number" id="cash-amount" placeholder="¿Con cuánto pagas? (ej. 200, 500)" style="width: 100%; padding: 8px; border-radius: 6px; border: 1px solid #333; background: #1a1a1a; color: #fff; font-size: 0.85rem; box-sizing: border-box;">
+        </div>
+
+        <button class="btn-send-whatsapp" onclick="sendOrderWhatsApp()" style="margin-top: 12px;">
+          📱 Enviar Pedido a WhatsApp
+        </button>
+      </div>
+    </aside>
+
+  </div>
+
+  <nav class="mobile-bottom-nav">
+    <button class="nav-btn active">
+      <span>🍹</span>
+      <small>Barra</small>
+    </button>
+    <button class="nav-btn" onclick="toggleMobileCart()">
+      <div class="cart-icon-badge">
+        <span>🛒</span>
+        <span class="badge" id="mobile-cart-badge">0</span>
+      </div>
+      <small>Pedido</small>
+    </button>
+  </nav>
+
+  <script src="tragos.js?v=1.0"></script>
+</body>
+</html>
