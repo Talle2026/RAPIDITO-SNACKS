@@ -14,26 +14,6 @@ const productos = [
     destacado: "🔥 Para Compartir",
     sabores: ["BBQ", "Mango Habanero", "Búfalo", "Tamarindo", "Hot", "Original"]
   },
-  {
-    id: 102,
-    nombre: "Promo 3 Mojitos",
-    categoria: "promos",
-    precio: 250,
-    descripcion: "3 Mojitos refrescantes a precio especial.",
-    imagen: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=400",
-    destacado: "🍹 Promo Bebidas",
-    sabores: ["Mango", "Frutos Rojos", "Mora Azul", "Combinados"]
-  },
-  {
-    id: 103,
-    nombre: "Combo Mojito + Hamburguesa Sencilla",
-    categoria: "promos",
-    precio: 150,
-    descripcion: "1 Hamburguesa Sencilla + 1 Mojito del sabor de tu elección.",
-    imagen: "https://images.unsplash.com/photo-1561758033-d89a9ad46330?w=400",
-    destacado: "⭐ Paquete Individual",
-    sabores: ["Mojito Mango", "Mojito Frutos Rojos", "Mojito Mora Azul"]
-  },
 
   // --- HAMBURGUESAS ---
   {
@@ -220,7 +200,7 @@ const productos = [
     sabores: ["Con Crema", "Con Lechera", "Con Mermelada", "Crema y Lechera", "Mixtos / Todo"]
   },
 
-  // --- BEBIDAS ---
+  // --- BEBIDAS (REFRESCOS Y JUGOS) ---
   {
     id: 19,
     nombre: "Coca-Cola Original 335ml",
@@ -295,26 +275,6 @@ const productos = [
     imagen: "https://images.unsplash.com/photo-1556881286-fc6915169721?w=300",
     destacado: "Helado",
     sabores: ["Té Verde con Miel", "Sandía", "Mango (Mucho Mango)", "Té Negro con Limón", "Fruit Punch"]
-  },
-  {
-    id: 13,
-    nombre: "Mojito Individual (1 pza)",
-    categoria: "bebidas",
-    precio: 100,
-    descripcion: "Refrescante mojito preparado.",
-    imagen: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=300",
-    destacado: "",
-    sabores: ["Mango", "Frutos Rojos", "Mora Azul"]
-  },
-  {
-    id: 14,
-    nombre: "2 Mojitos x $180",
-    categoria: "bebidas",
-    precio: 180,
-    descripcion: "2 Mojitos preparados a elegir.",
-    imagen: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=300",
-    destacado: "Par de Mojitos",
-    sabores: ["2x Mango", "2x Frutos Rojos", "2x Mora Azul", "1 Mango + 1 Frutos Rojos", "1 Mango + 1 Mora Azul", "1 Frutos Rojos + 1 Mora Azul"]
   }
 ];
 
@@ -506,122 +466,4 @@ function obtenerUbicacionGPS() {
         btnGps.style.color = "#fff";
       }
       if (statusElem) {
-        statusElem.style.color = "#2dc653";
-        statusElem.innerText = "Ubicación lista para enviarse.";
-      }
-    },
-    (error) => {
-      if (btnGps) btnGps.innerText = "📍 Usar mi ubicación actual (GPS)";
-      if (statusElem) {
-        statusElem.style.color = "#ff4d4d";
-        statusElem.innerText = error.code === error.PERMISSION_DENIED 
-          ? "Permiso de ubicación denegado." 
-          : "No se pudo obtener la ubicación.";
-      }
-    },
-    { enableHighAccuracy: true, timeout: 10000 }
-  );
-}
-
-function sendOrderWhatsApp() {
-  if (carrito.length === 0) {
-    alert("Agrega al menos un producto a tu pedido.");
-    return;
-  }
-
-  const telefonoWhatsApp = "525648336057";
-  const deliveryType = document.querySelector('input[name="delivery-type"]:checked')?.value || "sucursal";
-  const metodoPago = document.getElementById("payment-method")?.value || "Efectivo";
-  const pagoConRaw = document.getElementById("cash-amount")?.value.trim();
-
-  let mensaje = "Hola *RAPIDITO SNACKS*, me gustaría realizar el siguiente pedido:\n\n";
-
-  let total = 0;
-  carrito.forEach(item => {
-    const subtotal = item.precio * item.cantidad;
-    total += subtotal;
-    const detalleSabor = item.sabor ? ` _(Complemento: ${item.sabor})_` : '';
-    mensaje += `▪ ${item.cantidad}x ${item.nombre}${detalleSabor} - $${subtotal.toFixed(2)}\n`;
-  });
-
-  mensaje += `\n*Total a Pagar:* $${total.toFixed(2)}\n`;
-
-  if (deliveryType === "domicilio") {
-    const direccionTexto = document.getElementById("client-address")?.value.trim() || "";
-    
-    if (!direccionTexto && !ubicacionGPS) {
-      alert("Por favor escribe tu dirección o comparte tu ubicación GPS para el envío a domicilio.");
-      return;
-    }
-
-    mensaje += `*Tipo de Pedido:* Entrega a domicilio 🛵\n`;
-    if (direccionTexto) mensaje += `*Dirección:* ${direccionTexto}\n`;
-    if (ubicacionGPS) mensaje += `*Ubicación GPS:* ${ubicacionGPS}\n`;
-  } else {
-    mensaje += `*Tipo de Pedido:* Para recoger en local 🛍️\n`;
-  }
-
-  mensaje += `*Método de Pago:* ${metodoPago}\n`;
-  if (metodoPago === "Efectivo" && pagoConRaw) {
-    const montoEfectivo = parseFloat(pagoConRaw);
-    if (!isNaN(montoEfectivo)) {
-      const cambio = montoEfectivo - total;
-      mensaje += `*Paga con:* $${montoEfectivo.toFixed(2)}`;
-      if (cambio >= 0) {
-        mensaje += ` (Cambio: $${cambio.toFixed(2)})\n`;
-      } else {
-        mensaje += ` _(Monto insuficiente)_\n`;
-      }
-    }
-  }
-
-  mensaje += "\n¡Muchas gracias!";
-
-  const url = `https://wa.me/${telefonoWhatsApp}?text=${encodeURIComponent(mensaje)}`;
-  window.open(url, "_blank");
-}
-
-// Exponer funciones globales
-window.addToCart = addToCart;
-window.cambiarCantidad = cambiarCantidad;
-window.toggleMobileCart = toggleMobileCart;
-window.toggleAddressInput = toggleAddressInput;
-window.toggleCashAmountInput = toggleCashAmountInput;
-window.obtenerUbicacionGPS = obtenerUbicacionGPS;
-window.sendOrderWhatsApp = sendOrderWhatsApp;
-
-document.addEventListener("DOMContentLoaded", () => {
-  renderProductos(productos);
-  actualizarCarritoUI();
-
-  const categoryButtons = document.querySelectorAll(".cat-btn");
-  categoryButtons.forEach(btn => {
-    btn.addEventListener("click", (e) => {
-      categoryButtons.forEach(b => b.classList.remove("active"));
-      
-      const currentBtn = e.currentTarget;
-      currentBtn.classList.add("active");
-
-      const cat = currentBtn.getAttribute("data-category");
-
-      if (cat === "todos") {
-        renderProductos(productos);
-      } else {
-        const filtrados = productos.filter(p => p.categoria === cat);
-        renderProductos(filtrados);
-      }
-    });
-  });
-
-  const searchInput = document.getElementById("search-input");
-  if (searchInput) {
-    searchInput.addEventListener("input", (e) => {
-      const texto = e.target.value.toLowerCase().trim();
-      const filtrados = productos.filter(p => 
-        p.nombre.toLowerCase().includes(texto) || 
-        p.descripcion.toLowerCase().includes(texto)
-      );
-      renderProductos(filtrados);
-    });
-  }
-});
+        statusElem.style.color = "#2dc65
