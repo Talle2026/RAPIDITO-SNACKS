@@ -3,6 +3,19 @@
 // ==========================================
 
 const productos = [
+  // --- COMBOS Y PROMOS ---
+  {
+    id: 101,
+    nombre: "3 Kilos de Alitas",
+    categoria: "promos",
+    precio: 500,
+    descripcion: "3 kilos de alitas jugosas con salsa a elegir.",
+    imagen: "https://images.unsplash.com/photo-1567620832903-9fc6debc209f?w=400",
+    destacado: "🔥 Para Compartir",
+    sabores: ["BBQ", "Mango Habanero", "Búfalo", "Tamarindo", "Hot", "Original"]
+  },
+
+  // --- HAMBURGUESAS ---
   {
     id: 1,
     nombre: "Hamburguesa Original",
@@ -39,8 +52,66 @@ const productos = [
     imagen: "https://images.unsplash.com/photo-1586190848861-99aa4a171e90?w=300",
     destacado: "🍔 La Más Grande"
   },
+
+  // --- HOT DOGS ---
   {
     id: 5,
+    nombre: "3 Hot Dogs Sencillos con Tocino",
+    categoria: "hotdogs",
+    precio: 80,
+    descripcion: "Paquete de 3 hot dogs clásicos envueltos en tocino.",
+    imagen: "https://images.unsplash.com/photo-1619740455993-9e612b1af08a?w=300",
+    destacado: "Paquete 3x"
+  },
+  {
+    id: 6,
+    nombre: "3 Hot Dogs Especiales",
+    categoria: "hotdogs",
+    precio: 100,
+    descripcion: "Paquete de 3 hot dogs con tocino y bastante queso manchego.",
+    imagen: "https://images.unsplash.com/photo-1619740455993-9e612b1af08a?w=300",
+    destacado: "3x $100"
+  },
+  {
+    id: 7,
+    nombre: "3 Hot Dogs Hawaianos",
+    categoria: "hotdogs",
+    precio: 130,
+    descripcion: "Paquete de 3 hot dogs con tocino, queso derretido y piña.",
+    imagen: "https://images.unsplash.com/photo-1619740455993-9e612b1af08a?w=300",
+    destacado: "3x $130"
+  },
+
+  // --- NACHOS Y SNACKS ---
+  {
+    id: 8,
+    nombre: "Nachos Especiales con Carne",
+    categoria: "snacks",
+    precio: 70,
+    descripcion: "Totopos bien cargados con queso, carne sabrosa y jugosa.",
+    imagen: "https://images.unsplash.com/photo-1513456852971-30c0b8199d4d?w=300",
+    destacado: "Cargados"
+  },
+  {
+    id: 9,
+    nombre: "Nachos Especiales con Longaniza",
+    categoria: "snacks",
+    precio: 70,
+    descripcion: "Totopos bien cargados con queso y longaniza picosa y deliciosa.",
+    imagen: "https://images.unsplash.com/photo-1513456852971-30c0b8199d4d?w=300",
+    destacado: ""
+  },
+  {
+    id: 10,
+    nombre: "Nachos Especiales Campechanos",
+    categoria: "snacks",
+    precio: 70,
+    descripcion: "Totopos con queso, mezcla de carne y longaniza ¡lo mejor de dos mundos!",
+    imagen: "https://images.unsplash.com/photo-1513456852971-30c0b8199d4d?w=300",
+    destacado: "🔥 El Más Pedido"
+  },
+  {
+    id: 11,
     nombre: "Papas a la Francesa",
     categoria: "snacks",
     precio: 45,
@@ -48,14 +119,162 @@ const productos = [
     imagen: "https://images.unsplash.com/photo-1576107232684-1279f3908594?w=300",
     destacado: ""
   },
+
+  // --- ALITAS ---
   {
-    id: 6,
+    id: 12,
+    nombre: "Orden de Alitas Fuego y Sabor",
+    categoria: "alitas",
+    precio: 75,
+    descripcion: "Alitas crujientes preparadas con la salsa de tu elección.",
+    imagen: "https://images.unsplash.com/photo-1567620832903-9fc6debc209f?w=300",
+    destacado: "Salsas Variadas",
+    sabores: ["BBQ", "Mango Habanero", "Búfalo", "Tamarindo Habanero", "Fuego", "Original"]
+  },
+  {
+    id: 27,
+    nombre: "Orden de Alitas con Papas",
+    categoria: "alitas",
+    precio: 90,
+    descripcion: "Alitas crujientes con salsa a elegir acompañadas de papas a la francesa.",
+    imagen: "https://images.unsplash.com/photo-1567620832903-9fc6debc209f?w=300",
+    destacado: "🍟 Recomendado",
+    sabores: ["BBQ", "Mango Habanero", "Búfalo", "Tamarindo Habanero", "Fuego", "Original"]
+  },
+
+  // --- POSTRES ---
+  {
+    id: 15,
+    nombre: "Carlota de Limón",
+    categoria: "postres",
+    precio: 50,
+    descripcion: "Postre frío de galleta con crema de limón casera.",
+    imagen: "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=400",
+    destacado: "🍰 Casero"
+  },
+  {
+    id: 16,
+    nombre: "Fresas con Crema",
+    categoria: "postres",
+    precio: 50,
+    descripcion: "Fresas frescas acompañadas de crema dulce especial.",
+    imagen: "https://images.unsplash.com/photo-1464305795204-6f5bbfc7fb81?w=400",
+    destacado: "🍓 Favorito"
+  },
+  {
+    id: 17,
+    nombre: "Duraznos con Crema",
+    categoria: "postres",
+    precio: 50,
+    descripcion: "Rebanadas de duraznos en almíbar servidos con crema dulce especial.",
+    imagen: "https://images.unsplash.com/photo-1595981267035-7b04ca84a82d?w=400",
+    destacado: "🍑 Delicioso"
+  },
+  {
+    id: 18,
+    nombre: "Arroz con Leche",
+    categoria: "postres",
+    precio: 50,
+    descripcion: "Cremoso arroz con leche espolvoreado con canela.",
+    imagen: "https://images.unsplash.com/photo-1517433670267-08bbd4be890f?w=400",
+    destacado: "Tradicional"
+  },
+  {
+    id: 28,
+    nombre: "Plátanos Fritos",
+    categoria: "postres",
+    precio: 50,
+    descripcion: "Plátanos maduros fritos en su punto, doraditos y dulces.",
+    imagen: "https://images.unsplash.com/photo-1528825871115-3581a5387919?w=400",
+    destacado: "🍌 Tradicional",
+    sabores: ["Con Crema", "Con Lechera", "Con Mermelada", "Crema y Lechera", "Mixtos / Todo"]
+  },
+  {
+    id: 29,
+    nombre: "Plátanos Capeados",
+    categoria: "postres",
+    precio: 55,
+    descripcion: "Deliciosos plátanos cubiertos con un capeado crujiente y doradito.",
+    imagen: "https://images.unsplash.com/photo-1528825871115-3581a5387919?w=400",
+    destacado: "⭐ Especialidad",
+    sabores: ["Con Crema", "Con Lechera", "Con Mermelada", "Crema y Lechera", "Mixtos / Todo"]
+  },
+
+  // --- BEBIDAS (REFRESCOS Y JUGOS) ---
+  {
+    id: 19,
     nombre: "Coca-Cola Original 335ml",
     categoria: "bebidas",
     precio: 30,
     descripcion: "Lata fría de Coca-Cola sabor original 335ml.",
     imagen: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300",
     destacado: "Fría"
+  },
+  {
+    id: 25,
+    nombre: "Coca-Cola Sin Azúcar 335ml",
+    categoria: "bebidas",
+    precio: 30,
+    descripcion: "Lata fría de Coca-Cola Sin Azúcar 335ml.",
+    imagen: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300",
+    destacado: "Sin Azúcar"
+  },
+  {
+    id: 26,
+    nombre: "Coca-Cola Zero 335ml",
+    categoria: "bebidas",
+    precio: 30,
+    descripcion: "Lata fría de Coca-Cola Zero 335ml.",
+    imagen: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300",
+    destacado: "Zero"
+  },
+  {
+    id: 20,
+    nombre: "Sprite 335ml",
+    categoria: "bebidas",
+    precio: 30,
+    descripcion: "Refresco sabor lima-limón en lata bien fría.",
+    imagen: "https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?w=300",
+    destacado: ""
+  },
+  {
+    id: 21,
+    nombre: "Jarrito",
+    categoria: "bebidas",
+    precio: 30,
+    descripcion: "Tradicional refresco Jarrito del sabor de tu elección.",
+    imagen: "https://images.unsplash.com/photo-1581006852262-e4307cf6283a?w=300",
+    destacado: "Sazones de México",
+    sabores: ["Mandarina", "Tamarindo", "Toronja", "Limón", "Fruit Punch"]
+  },
+  {
+    id: 22,
+    nombre: "Manzanita Sol",
+    categoria: "bebidas",
+    precio: 30,
+    descripcion: "Refresco clásico sabor manzana.",
+    imagen: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300",
+    destacado: ""
+  },
+  {
+    id: 23,
+    nombre: "Boing",
+    categoria: "bebidas",
+    precio: 30,
+    descripcion: "Delicioso jugo de fruta Boing sabor a elegir.",
+    imagen: "https://images.unsplash.com/photo-1546173159-315724a31696?w=300",
+    destacado: "Fruta Real",
+    sabores: ["Mango", "Guayaba", "Durazno", "Uva", "Manzana"]
+  },
+  {
+    id: 24,
+    nombre: "Té Arizona",
+    categoria: "bebidas",
+    precio: 30,
+    descripcion: "Lata de Té Arizona helado sabor a elegir.",
+    imagen: "https://images.unsplash.com/photo-1556881286-fc6915169721?w=300",
+    destacado: "Helado",
+    sabores: ["Té Verde con Miel", "Sandía", "Mango (Mucho Mango)", "Té Negro con Limón", "Fruit Punch"]
   }
 ];
 
@@ -68,16 +287,29 @@ function renderProductos(items) {
   grid.innerHTML = "";
 
   items.forEach(prod => {
+    let selectorSaboresHtml = "";
+    if (prod.sabores && prod.sabores.length > 0) {
+      selectorSaboresHtml = `
+        <div style="margin: 8px 0;">
+          <label style="font-size: 0.75rem; color: #aaa; display: block; margin-bottom: 3px;">Complemento / Sabor:</label>
+          <select id="sabor-${prod.id}" style="width: 100%; background: #1a1a1a; color: #fff; border: 1px solid #333; padding: 6px; border-radius: 6px; font-size: 0.8rem;">
+            ${prod.sabores.map(sabor => `<option value="${sabor}">${sabor}</option>`).join('')}
+          </select>
+        </div>
+      `;
+    }
+
     const article = document.createElement("article");
     article.className = "product-card";
     article.innerHTML = `
       <div class="card-img-wrap">
-        <img src="${prod.imagen}" alt="${prod.nombre}" loading="lazy">
+        <img src="${prod.imagen}" alt="${prod.nombre}" loading="lazy" onerror="this.src='https://via.placeholder.com/300x200?text=Rapidito+Snacks'">
         ${prod.destacado ? `<span class="card-tag">${prod.destacado}</span>` : ''}
       </div>
       <div class="card-body">
         <h3>${prod.nombre}</h3>
         <p>${prod.descripcion}</p>
+        ${selectorSaboresHtml}
         <div class="card-action">
           <span class="price">$${prod.precio.toFixed(2)}</span>
           <button class="btn-add-item" onclick="addToCart(${prod.id})">+ Pedir</button>
@@ -92,12 +324,23 @@ function addToCart(id) {
   const producto = productos.find(p => p.id === id);
   if (!producto) return;
 
-  const itemEnCarrito = carrito.find(item => item.id === id);
+  const selectElem = document.getElementById(`sabor-${id}`);
+  const saborSeleccionado = selectElem ? selectElem.value : null;
+
+  const itemKey = saborSeleccionado ? `${id}-${saborSeleccionado}` : `${id}`;
+  const itemEnCarrito = carrito.find(item => item.key === itemKey);
+
   if (itemEnCarrito) {
     itemEnCarrito.cantidad++;
   } else {
-    carrito.push({ ...producto, cantidad: 1 });
+    carrito.push({
+      ...producto,
+      key: itemKey,
+      sabor: saborSeleccionado,
+      cantidad: 1
+    });
   }
+
   actualizarCarritoUI();
 }
 
@@ -130,36 +373,43 @@ function actualizarCarritoUI() {
   carrito.forEach(item => {
     const itemDiv = document.createElement("div");
     itemDiv.style.cssText = "display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; background: #121212; padding: 8px; border-radius: 8px;";
+    
+    const detalleSabor = item.sabor ? `<span style="font-size: 0.72rem; color: #ffb703; display: block;">Complemento: ${item.sabor}</span>` : '';
+
     itemDiv.innerHTML = `
       <div style="flex: 1; padding-right: 8px;">
         <strong style="font-size: 0.85rem; display: block;">${item.nombre}</strong>
+        ${detalleSabor}
         <div style="font-size: 0.75rem; color: #aaa;">$${(item.precio * item.cantidad).toFixed(2)}</div>
       </div>
       <div style="display: flex; gap: 5px; align-items: center;">
-        <button onclick="cambiarCantidad(${item.id}, -1)" style="background: #2a2a2a; color: white; border: none; padding: 2px 8px; border-radius: 4px; cursor: pointer;">-</button>
+        <button onclick="cambiarCantidad('${item.key}', -1)" style="background: #2a2a2a; color: white; border: none; padding: 2px 8px; border-radius: 4px; cursor: pointer;">-</button>
         <span style="font-size: 0.85rem; width: 16px; text-align: center;">${item.cantidad}</span>
-        <button onclick="cambiarCantidad(${item.id}, 1)" style="background: #d9381e; color: white; border: none; padding: 2px 8px; border-radius: 4px; cursor: pointer;">+</button>
+        <button onclick="cambiarCantidad('${item.key}', 1)" style="background: #d9381e; color: white; border: none; padding: 2px 8px; border-radius: 4px; cursor: pointer;">+</button>
       </div>
     `;
     cartList.appendChild(itemDiv);
   });
 }
 
-function cambiarCantidad(id, cambio) {
-  const item = carrito.find(i => i.id === id);
+function cambiarCantidad(key, cambio) {
+  const item = carrito.find(i => i.key === key);
   if (!item) return;
 
   item.cantidad += cambio;
   if (item.cantidad <= 0) {
-    carrito = carrito.filter(i => i.id !== id);
+    carrito = carrito.filter(i => i.key !== key);
   }
+
   actualizarCarritoUI();
 }
 
 function toggleMobileCart() {
   const sidebar = document.getElementById("cart-sidebar");
   if (!sidebar) return;
+
   const isVisible = getComputedStyle(sidebar).display !== "none";
+
   if (isVisible && sidebar.style.position === "fixed") {
     sidebar.style.display = "none";
   } else {
@@ -194,21 +444,40 @@ function obtenerUbicacionGPS() {
   const btnGps = document.getElementById("btn-gps");
 
   if (!navigator.geolocation) {
-    if (statusElem) statusElem.innerText = "Geolocalización no soportada.";
+    if (statusElem) {
+      statusElem.style.color = "#ff4d4d";
+      statusElem.innerText = "Tu navegador no soporta geolocalización.";
+    }
     return;
   }
 
-  if (btnGps) btnGps.innerText = "⏳ Obteniendo...";
+  if (btnGps) btnGps.innerText = "⏳ Obteniendo ubicación...";
+
   navigator.geolocation.getCurrentPosition(
-    (pos) => {
-      ubicacionGPS = `https://maps.google.com/?q=${pos.coords.latitude},${pos.coords.longitude}`;
+    (position) => {
+      const lat = position.coords.latitude;
+      const lng = position.coords.longitude;
+      ubicacionGPS = `https://maps.google.com/?q=${lat},${lng}`;
+      
       if (btnGps) {
-        btnGps.innerText = "✅ Ubicación lista";
+        btnGps.innerText = "✅ Ubicación obtenida";
         btnGps.style.background = "#1b4332";
+        btnGps.style.borderColor = "#2dc653";
+        btnGps.style.color = "#fff";
+      }
+      if (statusElem) {
+        statusElem.style.color = "#2dc653";
+        statusElem.innerText = "Ubicación lista para enviarse.";
       }
     },
-    () => {
-      if (btnGps) btnGps.innerText = "📍 Usar mi ubicación (GPS)";
+    (error) => {
+      if (btnGps) btnGps.innerText = "📍 Usar mi ubicación actual (GPS)";
+      if (statusElem) {
+        statusElem.style.color = "#ff4d4d";
+        statusElem.innerText = error.code === error.PERMISSION_DENIED 
+          ? "Permiso de ubicación denegado." 
+          : "No se pudo obtener la ubicación.";
+      }
     },
     { enableHighAccuracy: true, timeout: 10000 }
   );
@@ -216,22 +485,103 @@ function obtenerUbicacionGPS() {
 
 function sendOrderWhatsApp() {
   if (carrito.length === 0) {
-    alert("Agrega al menos un producto.");
+    alert("Agrega al menos un producto a tu pedido.");
     return;
   }
+
   const telefonoWhatsApp = "525648336057";
-  let mensaje = "Hola *RAPIDITO SNACKS*, mi pedido:\n\n";
+  const deliveryType = document.querySelector('input[name="delivery-type"]:checked')?.value || "sucursal";
+  const metodoPago = document.getElementById("payment-method")?.value || "Efectivo";
+  const pagoConRaw = document.getElementById("cash-amount")?.value.trim();
+
+  let mensaje = "Hola *RAPIDITO SNACKS*, me gustaría realizar el siguiente pedido:\n\n";
+
   let total = 0;
   carrito.forEach(item => {
-    const sub = item.precio * item.cantidad;
-    total += sub;
-    mensaje += `▪ ${item.cantidad}x ${item.nombre} - $${sub.toFixed(2)}\n`;
+    const subtotal = item.precio * item.cantidad;
+    total += subtotal;
+    const detalleSabor = item.sabor ? ` _(Complemento: ${item.sabor})_` : '';
+    mensaje += `▪ ${item.cantidad}x ${item.nombre}${detalleSabor} - $${subtotal.toFixed(2)}\n`;
   });
-  mensaje += `\n*Total:* $${total.toFixed(2)}\n¡Gracias!`;
-  window.open(`https://wa.me/${telefonoWhatsApp}?text=${encodeURIComponent(mensaje)}`, "_blank");
+
+  mensaje += `\n*Total a Pagar:* $${total.toFixed(2)}\n`;
+
+  if (deliveryType === "domicilio") {
+    const direccionTexto = document.getElementById("client-address")?.value.trim() || "";
+    
+    if (!direccionTexto && !ubicacionGPS) {
+      alert("Por favor escribe tu dirección o comparte tu ubicación GPS para el envío a domicilio.");
+      return;
+    }
+
+    mensaje += `*Tipo de Pedido:* Entrega a domicilio 🛵\n`;
+    if (direccionTexto) mensaje += `*Dirección:* ${direccionTexto}\n`;
+    if (ubicacionGPS) mensaje += `*Ubicación GPS:* ${ubicacionGPS}\n`;
+  } else {
+    mensaje += `*Tipo de Pedido:* Para recoger en local 🛍️\n`;
+  }
+
+  mensaje += `*Método de Pago:* ${metodoPago}\n`;
+  if (metodoPago === "Efectivo" && pagoConRaw) {
+    const montoEfectivo = parseFloat(pagoConRaw);
+    if (!isNaN(montoEfectivo)) {
+      const cambio = montoEfectivo - total;
+      mensaje += `*Paga con:* $${montoEfectivo.toFixed(2)}`;
+      if (cambio >= 0) {
+        mensaje += ` (Cambio: $${cambio.toFixed(2)})\n`;
+      } else {
+        mensaje += ` _(Monto insuficiente)_\n`;
+      }
+    }
+  }
+
+  mensaje += "\n¡Muchas gracias!";
+
+  const url = `https://wa.me/${telefonoWhatsApp}?text=${encodeURIComponent(mensaje)}`;
+  window.open(url, "_blank");
 }
+
+// Exponer funciones globales
+window.addToCart = addToCart;
+window.cambiarCantidad = cambiarCantidad;
+window.toggleMobileCart = toggleMobileCart;
+window.toggleAddressInput = toggleAddressInput;
+window.toggleCashAmountInput = toggleCashAmountInput;
+window.obtenerUbicacionGPS = obtenerUbicacionGPS;
+window.sendOrderWhatsApp = sendOrderWhatsApp;
 
 document.addEventListener("DOMContentLoaded", () => {
   renderProductos(productos);
   actualizarCarritoUI();
+
+  const categoryButtons = document.querySelectorAll(".cat-btn");
+  categoryButtons.forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      categoryButtons.forEach(b => b.classList.remove("active"));
+      
+      const currentBtn = e.currentTarget;
+      currentBtn.classList.add("active");
+
+      const cat = currentBtn.getAttribute("data-category");
+
+      if (cat === "todos") {
+        renderProductos(productos);
+      } else {
+        const filtrados = productos.filter(p => p.categoria === cat);
+        renderProductos(filtrados);
+      }
+    });
+  });
+
+  const searchInput = document.getElementById("search-input");
+  if (searchInput) {
+    searchInput.addEventListener("input", (e) => {
+      const texto = e.target.value.toLowerCase().trim();
+      const filtrados = productos.filter(p => 
+        p.nombre.toLowerCase().includes(texto) || 
+        p.descripcion.toLowerCase().includes(texto)
+      );
+      renderProductos(filtrados);
+    });
+  }
 });
