@@ -129,7 +129,6 @@ function renderProductos() {
 
     const article = document.createElement("article");
     article.className = "product-card";
-    // Aplicamos un borde lateral o sutil contorno del color característico de la bebida
     article.style.cssText = `border-left: 4px solid ${colorBorde};`;
 
     article.innerHTML = `
@@ -203,7 +202,9 @@ function actualizarCarritoUI() {
   cartList.innerHTML = "";
   carrito.forEach(item => {
     const itemDiv = document.createElement("div");
-    itemDiv.style.cssText = `display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; background: #121212; padding: 8px; border-radius: 8px; border-left: 3px solid ${item.colorBorde || '#ffb703'};`;
+    // Usamos el colorBorde del producto directamente en el carrito
+    const colorItem = item.colorBorde || '#ffb703';
+    itemDiv.style.cssText = `display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; background: #121212; padding: 8px; border-radius: 8px; border-left: 3px solid ${colorItem};`;
     
     const detalleSabor = item.sabor ? `<span style="font-size: 0.72rem; color: #ffb703; display: block;">Detalle: ${item.sabor}</span>` : '';
 
