@@ -3,6 +3,35 @@
 // ==========================================
 
 const productosTragos = [
+  // --- MOJITOS ---
+  {
+    id: 13,
+    nombre: "Mojito Individual",
+    precio: 100,
+    descripcion: "Refrescante mojito preparado artesanalmente.",
+    imagen: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=300",
+    destacado: "⭐ Especialidad",
+    colorBorde: "#2ec4b6",
+    sabores: ["Mango", "Frutos Rojos", "Mora Azul"]
+  },
+  {
+    id: 14,
+    nombre: "2 Mojitos x $180",
+    precio: 180,
+    descripcion: "Promoción de par de mojitos preparados a elegir.",
+    imagen: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=300",
+    destacado: "🔥 Promo Mojitos",
+    colorBorde: "#2ec4b6",
+    sabores: [
+      "2x Mango", 
+      "2x Frutos Rojos", 
+      "2x Mora Azul", 
+      "1 Mango + 1 Frutos Rojos", 
+      "1 Mango + 1 Mora Azul", 
+      "1 Frutos Rojos + 1 Mora Azul"
+    ]
+  },
+
   // --- INDIVIDUALES ($100 c/u) ---
   {
     id: 201,
@@ -10,7 +39,8 @@ const productosTragos = [
     precio: 100,
     descripcion: "Refrescante cantarito preparado con escarchado de chamoy y chile.",
     imagen: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=300",
-    destacado: "⭐ Especialidad"
+    destacado: "🍊 Cítrico",
+    colorBorde: "#f77f00" // Color toronja / naranja
   },
   {
     id: 202,
@@ -18,7 +48,8 @@ const productosTragos = [
     precio: 100,
     descripcion: "Cerveza bien fría preparada con clamato, salsas de la casa y escarchado.",
     imagen: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=300",
-    destacado: "🍺 Clásica"
+    destacado: "🍺 Clásica",
+    colorBorde: "#d4a373"
   },
   {
     id: 203,
@@ -26,7 +57,8 @@ const productosTragos = [
     precio: 100,
     descripcion: "Tradicional paloma bien fría con toronja y toque cítrico.",
     imagen: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=300",
-    destacado: ""
+    destacado: "🍹 Refrescante",
+    colorBorde: "#fcbf49" // Tono toronja suave
   },
   {
     id: 204,
@@ -34,7 +66,8 @@ const productosTragos = [
     precio: 100,
     descripcion: "Preparado especial sabor mora azul bien helado.",
     imagen: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=300",
-    destacado: "🔥 El Más Pedido"
+    destacado: "🔥 El Más Pedido",
+    colorBorde: "#00b4d8" // Color azul brillante
   },
   {
     id: 205,
@@ -42,7 +75,8 @@ const productosTragos = [
     precio: 100,
     descripcion: "Preparado dulce y picosito sabor frutos rojos / tamarindo.",
     imagen: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=300",
-    destacado: ""
+    destacado: "🍓 Dulce y Picosito",
+    colorBorde: "#e63946" // Color rojo intenso
   },
 
   // --- PROMO PAR DE TRAGOS ($180 x 2) ---
@@ -53,6 +87,7 @@ const productosTragos = [
     descripcion: "Elige la combinación de 2 bebidas a precio especial.",
     imagen: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=400",
     destacado: "🎉 Promo 2x $180",
+    colorBorde: "#ffb703",
     sabores: [
       "2x Cantarito",
       "2x Michelada",
@@ -82,7 +117,7 @@ function renderProductos() {
     if (prod.sabores && prod.sabores.length > 0) {
       selectorSaboresHtml = `
         <div style="margin: 8px 0;">
-          <label style="font-size: 0.75rem; color: #aaa; display: block; margin-bottom: 3px;">Combinación de bebidas:</label>
+          <label style="font-size: 0.75rem; color: #aaa; display: block; margin-bottom: 3px;">Sabor / Combinación:</label>
           <select id="sabor-${prod.id}" style="width: 100%; background: #1a1a1a; color: #fff; border: 1px solid #333; padding: 6px; border-radius: 6px; font-size: 0.8rem;">
             ${prod.sabores.map(sabor => `<option value="${sabor}">${sabor}</option>`).join('')}
           </select>
@@ -90,12 +125,17 @@ function renderProductos() {
       `;
     }
 
+    const colorBorde = prod.colorBorde || "#333";
+
     const article = document.createElement("article");
     article.className = "product-card";
+    // Aplicamos un borde lateral o sutil contorno del color característico de la bebida
+    article.style.cssText = `border-left: 4px solid ${colorBorde};`;
+
     article.innerHTML = `
       <div class="card-img-wrap">
         <img src="${prod.imagen}" alt="${prod.nombre}" loading="lazy">
-        ${prod.destacado ? `<span class="card-tag">${prod.destacado}</span>` : ''}
+        ${prod.destacado ? `<span class="card-tag" style="background: ${colorBorde}; color: #fff;">${prod.destacado}</span>` : ''}
       </div>
       <div class="card-body">
         <h3>${prod.nombre}</h3>
@@ -163,7 +203,7 @@ function actualizarCarritoUI() {
   cartList.innerHTML = "";
   carrito.forEach(item => {
     const itemDiv = document.createElement("div");
-    itemDiv.style.cssText = "display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; background: #121212; padding: 8px; border-radius: 8px;";
+    itemDiv.style.cssText = `display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; background: #121212; padding: 8px; border-radius: 8px; border-left: 3px solid ${item.colorBorde || '#ffb703'};`;
     
     const detalleSabor = item.sabor ? `<span style="font-size: 0.72rem; color: #ffb703; display: block;">Detalle: ${item.sabor}</span>` : '';
 
