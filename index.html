@@ -37,6 +37,13 @@
         </div>
       </header>
 
+      <!-- BOTÓN DIRECTO A LA ESTACIÓN DEL TRAGO -->
+      <div style="text-align: center; margin: 12px 15px 5px 15px;">
+        <a href="tragos.html" style="background: #1b263b; color: #ffffff; padding: 12px 20px; border-radius: 10px; text-decoration: none; font-weight: bold; font-size: 0.95rem; border: 2px solid #ffb703; display: block; box-shadow: 0 4px 10px rgba(0,0,0,0.3); text-align: center;">
+          🍹 IR A LA ESTACIÓN DEL TRAGO (BEBIDAS) ➔
+        </a>
+      </div>
+
       <!-- BANNER DE PROMOCIÓN DESTACADA -->
       <section class="hero-promo">
         <div class="promo-card">
@@ -68,128 +75,3 @@
         <button class="cat-btn active" data-category="todos">
           <span class="cat-emoji">🔥</span>
           <span class="cat-text">Todo</span>
-        </button>
-        <button class="cat-btn" data-category="hamburguesas">
-          <span class="cat-emoji">🍔</span>
-          <span class="cat-text">Hamburguesas</span>
-        </button>
-        <button class="cat-btn" data-category="hotdogs">
-          <span class="cat-emoji">🌭</span>
-          <span class="cat-text">Hotdogs</span>
-        </button>
-        <button class="cat-btn" data-category="alitas">
-          <span class="cat-emoji">🍗</span>
-          <span class="cat-text">Alitas</span>
-        </button>
-        <button class="cat-btn" data-category="postres">
-          <span class="cat-emoji">🍰</span>
-          <span class="cat-text">Postres</span>
-        </button>
-        <button class="cat-btn" data-category="bebidas">
-          <span class="cat-emoji">🥤</span>
-          <span class="cat-text">Bebidas</span>
-        </button>
-        <button class="cat-btn" data-category="snacks">
-          <span class="cat-emoji">🍟</span>
-          <span class="cat-text">Snacks</span>
-        </button>
-      </nav>
-
-      <!-- LISTADO DE PRODUCTOS -->
-      <section class="products-section">
-        <div class="section-title-wrap">
-          <h2 id="category-title">Menú Principal</h2>
-        </div>
-
-        <div class="products-grid" id="products-grid">
-          <!-- Los productos se renderizan dinámicamente desde app.js -->
-        </div>
-      </section>
-
-    </div>
-
-    <!-- PANEL DEL CARRITO / PEDIDO -->
-    <aside class="cart-sidebar" id="cart-sidebar">
-      <div class="cart-header">
-        <div style="display: flex; align-items: center; gap: 10px;">
-          <h3>🛒 Tu Pedido</h3>
-          <span class="items-count" id="cart-count">0</span>
-        </div>
-        <button class="btn-close-cart" onclick="toggleMobileCart()">← Volver al menú</button>
-      </div>
-
-      <div class="cart-list" id="cart-items-list">
-        <div class="empty-state">
-          <span>🍽️</span>
-          <p>Aún no has agregado delicias a tu pedido.</p>
-        </div>
-      </div>
-
-      <div class="cart-footer">
-        <div class="total-row">
-          <span>Total:</span>
-          <strong id="total-val">$0.00</strong>
-        </div>
-
-        <!-- OPCIONES DE ENTREGA -->
-        <div class="delivery-options">
-          <label>
-            <input type="radio" name="delivery-type" value="sucursal" checked onchange="toggleAddressInput()">
-            <span>Para recoger</span>
-          </label>
-          <label>
-            <input type="radio" name="delivery-type" value="domicilio" onchange="toggleAddressInput()">
-            <span>Domicilio</span>
-          </label>
-        </div>
-
-        <!-- CAMPO DE DIRECCIÓN Y BOTÓN GPS -->
-        <div id="delivery-address-container" style="display: none; margin-top: 10px;">
-          <input type="text" id="client-address" placeholder="Calle, número, colonia..." style="width: 100%; padding: 8px; border-radius: 6px; border: 1px solid #333; background: #1a1a1a; color: #fff; font-size: 0.85rem; margin-bottom: 8px; box-sizing: border-box;">
-          <button type="button" id="btn-gps" onclick="obtenerUbicacionGPS()" style="width: 100%; padding: 8px; background: #2a2a2a; color: #ffb703; border: 1px solid #ffb703; border-radius: 6px; font-size: 0.8rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 5px;">
-            📍 Usar mi ubicación actual (GPS)
-          </button>
-          <small id="gps-status" style="display: block; font-size: 0.75rem; color: #aaa; margin-top: 4px; text-align: center;"></small>
-        </div>
-
-        <!-- MÉTODO DE PAGO -->
-        <div style="margin-top: 12px;">
-          <label style="font-size: 0.75rem; color: #aaa; display: block; margin-bottom: 4px;">Método de Pago:</label>
-          <select id="payment-method" style="width: 100%; padding: 8px; border-radius: 6px; border: 1px solid #333; background: #1a1a1a; color: #fff; font-size: 0.85rem;" onchange="toggleCashAmountInput()">
-            <option value="Efectivo">💵 Efectivo</option>
-            <option value="Transferencia">📱 Transferencia (BBVA / Spin)</option>
-            <option value="Tarjeta">💳 Tarjeta (Terminal)</option>
-          </select>
-        </div>
-
-        <!-- CAMPO PARA CAMBIO EN EFECTIVO -->
-        <div id="cash-change-container" style="margin-top: 8px;">
-          <input type="number" id="cash-amount" placeholder="¿Con cuánto pagas? (ej. 200, 500)" style="width: 100%; padding: 8px; border-radius: 6px; border: 1px solid #333; background: #1a1a1a; color: #fff; font-size: 0.85rem; box-sizing: border-box;">
-        </div>
-
-        <button class="btn-send-whatsapp" onclick="sendOrderWhatsApp()" style="margin-top: 12px;">
-          📱 Enviar Pedido por WhatsApp
-        </button>
-      </div>
-    </aside>
-
-  </div>
-
-  <!-- NAVEGACIÓN INFERIOR PARA MÓVIL -->
-  <nav class="mobile-bottom-nav">
-    <button class="nav-btn active">
-      <span>🏠</span>
-      <small>Menú</small>
-    </button>
-    <button class="nav-btn" onclick="toggleMobileCart()">
-      <div class="cart-icon-badge">
-        <span>🛒</span>
-        <span class="badge" id="mobile-cart-badge">0</span>
-      </div>
-      <small>Pedido</small>
-    </button>
-  </nav>
-
-  <script src="app.js?v=7.0"></script>
-</body>
-</html>
