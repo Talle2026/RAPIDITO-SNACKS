@@ -201,7 +201,7 @@ body.theme-rapidito {
   width: 100%;
 }
 
-/* 6. CATEGORÍAS DESLIZABLES (Ajustado para scroll lateral suave) */
+/* 6. CATEGORÍAS DESLIZABLES */
 .category-scroll {
   display: flex;
   gap: 10px;
@@ -228,7 +228,7 @@ body.theme-rapidito {
   white-space: nowrap;
   color: var(--text-muted);
   cursor: pointer;
-  flex: 0 0 auto; /* Evita que los botones rompan el ancho de la página */
+  flex: 0 0 auto;
 }
 
 .cat-btn.active {
@@ -238,7 +238,7 @@ body.theme-rapidito {
   font-weight: bold;
 }
 
-/* 7. GRID DE PRODUCTOS (Corregido para 2 columnas en móviles sin salir de pantalla) */
+/* 7. GRID DE PRODUCTOS */
 .products-section {
   width: 100%;
 }
@@ -328,15 +328,19 @@ body.theme-rapidito {
 
 /* 8. SIDEBAR DEL CARRITO */
 .cart-sidebar {
-  width: 320px;
+  width: 100%;
+  max-width: 400px;
   background: var(--card-bg);
   border-left: 1px solid var(--border-color);
   padding: 20px;
-  display: none; /* Oculto en móvil por defecto */
+  display: none;
   flex-direction: column;
   height: 100vh;
-  position: sticky;
+  position: fixed;
   top: 0;
+  right: 0;
+  z-index: 1000;
+  overflow-y: auto;
 }
 
 .cart-header {
@@ -347,14 +351,13 @@ body.theme-rapidito {
   border-bottom: 1px solid var(--border-color);
 }
 
-/* Botón para volver al menú desde el carrito en móviles */
 .btn-close-cart {
   background: var(--dark-bg);
   color: var(--accent-yellow);
   border: 1px solid var(--border-color);
-  padding: 6px 10px;
+  padding: 6px 12px;
   border-radius: 8px;
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   font-weight: bold;
   cursor: pointer;
 }
@@ -367,9 +370,9 @@ body.theme-rapidito {
   font-size: 0.8rem;
 }
 
-.cart-list {
+.cart-list, .cart-items-list {
   flex: 1;
-  padding: 20px 0;
+  padding: 15px 0;
   overflow-y: auto;
 }
 
@@ -377,6 +380,7 @@ body.theme-rapidito {
   text-align: center;
   color: var(--text-muted);
   font-size: 0.85rem;
+  padding: 20px 0;
 }
 
 .empty-state span {
@@ -388,41 +392,63 @@ body.theme-rapidito {
 .cart-footer {
   border-top: 1px solid var(--border-color);
   padding-top: 15px;
+  background: var(--card-bg);
 }
 
 .total-row {
   display: flex;
   justify-content: space-between;
   font-size: 1.1rem;
-  margin-bottom: 15px;
+  margin-bottom: 12px;
+  font-weight: bold;
 }
 
+/* Opciones de entrega corregidas para evitar amontonamientos */
 .delivery-options {
   display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 10px 0;
+}
+
+.delivery-options label, .delivery-radio {
+  display: flex;
+  align-items: center;
   gap: 10px;
-  margin-bottom: 15px;
-}
-
-.delivery-options label {
-  flex: 1;
-  background: var(--dark-bg);
-  padding: 8px;
-  border-radius: 8px;
-  font-size: 0.8rem;
-  text-align: center;
+  font-size: 0.85rem;
+  color: #fff;
   cursor: pointer;
+  background: var(--dark-bg);
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
 }
 
-.btn-send-whatsapp {
+.delivery-options input[type="radio"], .delivery-radio input[type="radio"] {
+  accent-color: var(--primary-red);
+  width: 16px;
+  height: 16px;
+  margin: 0;
+}
+
+/* Botón de WhatsApp optimizado */
+.btn-whatsapp-order, .btn-send-whatsapp {
   width: 100%;
   background: #25d366;
-  color: white;
+  color: #ffffff;
   border: none;
   padding: 12px;
   border-radius: 10px;
   font-weight: bold;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  text-align: center;
+  margin-top: 10px;
 }
 
 /* 9. NAVEGACIÓN MÓVIL INFERIOR */
@@ -447,6 +473,7 @@ body.theme-rapidito {
   flex-direction: column;
   align-items: center;
   font-size: 0.75rem;
+  cursor: pointer;
 }
 
 .nav-btn.active {
@@ -472,11 +499,14 @@ body.theme-rapidito {
 @media (min-width: 900px) {
   .cart-sidebar {
     display: flex;
+    position: sticky;
+    height: 100vh;
+    max-width: 320px;
   }
 
   .mobile-bottom-nav,
   .btn-close-cart {
-    display: none; /* Se ocultan en computadora */
+    display: none;
   }
 
   body.theme-rapidito {
