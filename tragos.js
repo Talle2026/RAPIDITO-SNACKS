@@ -40,7 +40,7 @@ const productosTragos = [
     descripcion: "Refrescante cantarito preparado con escarchado de chamoy y chile.",
     imagen: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=300",
     destacado: "🍊 Cítrico",
-    colorBorde: "#f77f00" // Color toronja / naranja
+    colorBorde: "#f77f00"
   },
   {
     id: 202,
@@ -58,7 +58,7 @@ const productosTragos = [
     descripcion: "Tradicional paloma bien fría con toronja y toque cítrico.",
     imagen: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=300",
     destacado: "🍹 Refrescante",
-    colorBorde: "#fcbf49" // Tono toronja suave
+    colorBorde: "#fcbf49"
   },
   {
     id: 204,
@@ -67,7 +67,7 @@ const productosTragos = [
     descripcion: "Preparado especial sabor mora azul bien helado.",
     imagen: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=300",
     destacado: "🔥 El Más Pedido",
-    colorBorde: "#00b4d8" // Color azul brillante
+    colorBorde: "#00b4d8"
   },
   {
     id: 205,
@@ -76,7 +76,7 @@ const productosTragos = [
     descripcion: "Preparado dulce y picosito sabor frutos rojos / tamarindo.",
     imagen: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=300",
     destacado: "🍓 Dulce y Picosito",
-    colorBorde: "#e63946" // Color rojo intenso
+    colorBorde: "#e63946"
   },
 
   // --- PROMO PAR DE TRAGOS ($180 x 2) ---
@@ -202,7 +202,6 @@ function actualizarCarritoUI() {
   cartList.innerHTML = "";
   carrito.forEach(item => {
     const itemDiv = document.createElement("div");
-    // Usamos el colorBorde del producto directamente en el carrito
     const colorItem = item.colorBorde || '#ffb703';
     itemDiv.style.cssText = `display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; background: #121212; padding: 8px; border-radius: 8px; border-left: 3px solid ${colorItem};`;
     
@@ -315,6 +314,60 @@ function obtenerUbicacionGPS() {
   );
 }
 
+// ==========================================
+// REGISTRO INTERNO SECRETO CON CONTRASEÑA
+// ==========================================
+function registrarPedidoInterno(items, totalVenta) {
+  let registros = JSON.parse(localStorage.getItem("registro_tragos_v2") || "[]");
+  const fechaHora = new Date().toLocaleString("es-MX");
+
+  const nuevoPedido = {
+    id: registros.length + 1,
+    fecha: fechaHora,
+    total: totalVenta,
+    detalles: items.map(i => `${i.cantidad}x ${i.nombre}${i.sabor ? ' (' + i.sabor + ')' : ''}`)
+  };
+
+  registros.push(nuevoPedido);
+  localStorage.setItem("registro_tragos_v2", JSON.stringify(registros));
+}
+
+function verRegistroSecreto() {
+  const passwordSecreto = "F@nt4$"; 
+  const ingreso = prompt("🔒 Introduce la contraseña de administración:");
+
+  if (ingreso !== passwordSecreto) {
+    if (ingreso !== null) {
+      alert("❌ Contraseña incorrecta.");
+    }
+    return;
+  }
+
+  let registros = JSON.parse(localStorage.getItem("registro_tragos_v2") || "[]");
+  if (registros.length === 0) {
+    alert("📊 PANEL INTERNO (Tragos):\nAún no se han generado ventas en este dispositivo.");
+    return;
+  }
+
+  let totalDinero = 0;
+  let reporteTexto = `📊 REPORTES DE TRAGOS (${registros.length} pedidos)\n----------------------------------------\n`;
+
+  registros.forEach(p => {
+    totalDinero += p.total;
+    reporteTexto += `#${p.id} [${p.fecha}] - Total: $${p.total}\n  ${p.detalles.join(", ")}\n\n`;
+  });
+
+  reporteTexto += `----------------------------------------\n💰 Venta Total Acumulada: $${totalDinero.toFixed(2)}\n\n`;
+  reporteTexto += `¿Deseas reiniciar el contador a 0 para una nueva jornada?`;
+
+  if (confirm(reporteTexto)) {
+    if (confirm("⚠️ ¿Seguro que quieres borrar el historial de ventas?")) {
+      localStorage.removeItem("registro_tragos_v2");
+      alert("✅ Historial reiniciado correctamente.");
+    }
+  }
+}
+
 function sendOrderWhatsApp() {
   if (carrito.length === 0) {
     alert("Agrega al menos una bebida a tu orden.");
@@ -369,6 +422,8 @@ function sendOrderWhatsApp() {
 
   mensaje += "\n¡Muchas gracias!";
 
+  registrarPedidoInterno(carrito, total);
+
   const url = `https://wa.me/${telefonoWhatsApp}?text=${encodeURIComponent(mensaje)}`;
   window.open(url, "_blank");
 }
@@ -385,4 +440,17 @@ window.sendOrderWhatsApp = sendOrderWhatsApp;
 document.addEventListener("DOMContentLoaded", () => {
   renderProductos();
   actualizarCarritoUI();
+
+  const tituloHeader = document.querySelector("header h1") || document.querySelector(".logo");
+  if (tituloHeader) {
+    let pressTimer;
+    tituloHeader.addEventListener("touchstart", () => {
+      pressTimer = setTimeout(() => verRegistroSecreto(), 3000);
+    });
+    tituloHeader.addEventListener("touchend", () => clearTimeout(pressTimer));
+    tituloHeader.addEventListener("mousedown", () => {
+      pressTimer = setTimeout(() => verRegistroSecreto(), 3000);
+    });
+    tituloHeader.addEventListener("mouseup", () => clearTimeout(pressTimer));
+  }
 });
