@@ -172,7 +172,7 @@ const productosSnacks = [
     id: 18,
     nombre: "Arroz con Leche",
     precio: 50.00,
-    descripcion: " традициональ postre casero espolvoreado con canela.",
+    descripcion: "Postre casero espolvoreado con canela.",
     imagen: "https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?w=300",
     destacado: "🥣 Tradicional",
     colorBorde: "#1abc9c"
@@ -600,7 +600,6 @@ function sendOrderWhatsApp() {
 
   mensaje += "\n¡Muchas gracias!";
 
-  // Guarda de manera interna y privada en el dispositivo del local
   registrarPedidoInterno(carrito, total);
 
   const url = `https://wa.me/${telefonoWhatsApp}?text=${encodeURIComponent(mensaje)}`;
@@ -617,7 +616,7 @@ window.obtenerUbicacionGPS = obtenerUbicacionGPS;
 window.sendOrderWhatsApp = sendOrderWhatsApp;
 
 document.addEventListener("DOMContentLoaded", () => {
-  registrarVisita(); // Cuenta la visita en silencio
+  registrarVisita(); 
   renderProductos();
   actualizarCarritoUI();
 
