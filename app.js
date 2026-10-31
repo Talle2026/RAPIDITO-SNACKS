@@ -49,7 +49,7 @@ const productos = [
     categoria: "hamburguesas",
     precio: 120,
     descripcion: "Doble carne de res, tocino, queso y aros de cebolla.",
-    imagen: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400",
+    imagen: "https://images.unsplash.com/photo-1586190848861-99aa4a171e90?w=300",
     destacado: "🔥 Doble Carne"
   },
 
@@ -89,7 +89,7 @@ const productos = [
     categoria: "snacks",
     precio: 75,
     descripcion: "Totopos cargados con queso, carne sabrosa y jugosa.",
-    imagen: "https://images.unsplash.com/photo-1582169505937-b99fbc74338d?w=300",
+    imagen: "https://images.unsplash.com/photo-1513456852971-30c0b8199d4d?w=300",
     destacado: "🧀 Con Carne"
   },
   {
@@ -98,7 +98,7 @@ const productos = [
     categoria: "snacks",
     precio: 75,
     descripcion: "Totopos cargados con queso y longaniza picosa.",
-    imagen: "https://images.unsplash.com/photo-1582169505937-b99fbc74338d?w=300",
+    imagen: "https://images.unsplash.com/photo-1513456852971-30c0b8199d4d?w=300",
     destacado: "🌶️ Con Longaniza"
   },
   {
@@ -107,7 +107,7 @@ const productos = [
     categoria: "snacks",
     precio: 75,
     descripcion: "Mezcla de carne y longaniza ¡Lo mejor de dos mundos!",
-    imagen: "https://images.unsplash.com/photo-1582169505937-b99fbc74338d?w=300",
+    imagen: "https://images.unsplash.com/photo-1513456852971-30c0b8199d4d?w=300",
     destacado: "🎉 Campechanos"
   },
   {
@@ -116,7 +116,7 @@ const productos = [
     categoria: "snacks",
     precio: 45,
     descripcion: "Orden de papas fritas doraditas y crujientes.",
-    imagen: "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=300",
+    imagen: "https://images.unsplash.com/photo-1576107232684-1279f3908594?w=300",
     destacado: "🍟 Crujientes"
   },
 
@@ -126,8 +126,8 @@ const productos = [
     nombre: "Orden de Alitas Fuego y Sabor",
     categoria: "alitas",
     precio: 75,
-    descripcion: "Alitas crujientes preparadas con salsa a elección (BBQ, Mango Habanero, Búfalo, Tamarindo, Hot u Original).",
-    imagen: "https://images.unsplash.com/photo-1527477396000-e27163b481c2?w=300",
+    descripcion: "Alitas crujientes preparadas con salsa a elección.",
+    imagen: "https://images.unsplash.com/photo-1567620832903-9fc6debc209f?w=300",
     destacado: "🍗 Alitas",
     sabores: ["BBQ", "Mango Habanero", "Búfalo", "Tamarindo", "Hot", "Original"]
   },
@@ -137,7 +137,7 @@ const productos = [
     categoria: "alitas",
     precio: 90,
     descripcion: "Alitas crujientes con salsa a elegir acompañadas de papas.",
-    imagen: "https://images.unsplash.com/photo-1527477396000-e27163b481c2?w=300",
+    imagen: "https://images.unsplash.com/photo-1567620832903-9fc6debc209f?w=300",
     destacado: "🍟 Con Papas",
     sabores: ["BBQ", "Mango Habanero", "Búfalo", "Tamarindo", "Hot", "Original"]
   },
@@ -149,8 +149,8 @@ const productos = [
     categoria: "postres",
     precio: 50,
     descripcion: "Postre frío casero con crema especial y galleta.",
-    imagen: "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=300",
-    destacado: "🍰 Postre Casero"
+    imagen: "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=400",
+    destacado: "🍰 Casero"
   },
   {
     id: 16,
@@ -158,7 +158,7 @@ const productos = [
     categoria: "postres",
     precio: 50,
     descripcion: "Fresas frescas servidas con crema dulce especial.",
-    imagen: "https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=300",
+    imagen: "https://images.unsplash.com/photo-1464305795204-6f5bbfc7fb81?w=400",
     destacado: "🍓 Dulce"
   },
   {
@@ -167,7 +167,7 @@ const productos = [
     categoria: "postres",
     precio: 50,
     descripcion: "Duraznos en almíbar servidos con crema dulce especial.",
-    imagen: "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=300",
+    imagen: "https://images.unsplash.com/photo-1595981267035-7b04ca84a82d?w=400",
     destacado: "🍑 Clásico"
   },
   {
@@ -176,7 +176,7 @@ const productos = [
     categoria: "postres",
     precio: 50,
     descripcion: "Postre casero espolvoreado con canela.",
-    imagen: "https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?w=300",
+    imagen: "https://images.unsplash.com/photo-1517433670267-08bbd4be890f?w=400",
     destacado: "🥣 Tradicional"
   },
   {
@@ -185,7 +185,7 @@ const productos = [
     categoria: "postres",
     precio: 50,
     descripcion: "Plátanos fritos acompañados de crema dulce.",
-    imagen: "https://images.unsplash.com/photo-1528825871115-3581a5387919?w=300",
+    imagen: "https://images.unsplash.com/photo-1528825871115-3581a5387919?w=400",
     destacado: "🍌 Fritos"
   },
   {
@@ -194,7 +194,7 @@ const productos = [
     categoria: "postres",
     precio: 55,
     descripcion: "Plátanos capeados crujientes con crema especial.",
-    imagen: "https://images.unsplash.com/photo-1528825871115-3581a5387919?w=300",
+    imagen: "https://images.unsplash.com/photo-1528825871115-3581a5387919?w=400",
     destacado: "⭐ Capeados"
   },
 
@@ -205,7 +205,7 @@ const productos = [
     categoria: "bebidas",
     precio: 30,
     descripcion: "Refresco de cola bien frío.",
-    imagen: "https://images.unsplash.com/photo-1554866585-cd94860890b7?w=300",
+    imagen: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300",
     destacado: "🥤 Bebida"
   },
   {
@@ -214,7 +214,7 @@ const productos = [
     categoria: "bebidas",
     precio: 30,
     descripcion: "Refresco sin azúcar.",
-    imagen: "https://images.unsplash.com/photo-1554866585-cd94860890b7?w=300",
+    imagen: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300",
     destacado: "🥤 Light"
   },
   {
@@ -223,5 +223,234 @@ const productos = [
     categoria: "bebidas",
     precio: 30,
     descripcion: "Refresco sabor cola sin calorías.",
-    imagen: "https://images.unsplash.com/photo-1554866585-cd94860890b7?w=300",
-    destacado: "
+    imagen: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300",
+    destacado: "🥤 Zero"
+  },
+  {
+    id: 20,
+    nombre: "Sprite (335ml)",
+    categoria: "bebidas",
+    precio: 30,
+    descripcion: "Refresco sabor lima-limón.",
+    imagen: "https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?w=300",
+    destacado: "🍋 Cítrico"
+  },
+  {
+    id: 21,
+    nombre: "Jarrito Mandarina",
+    categoria: "bebidas",
+    precio: 30,
+    descripcion: "Sabor tradicional mexicano.",
+    imagen: "https://images.unsplash.com/photo-1581006852262-e4307cf6283a?w=300",
+    destacado: "🍊 Jarrito"
+  },
+  {
+    id: 22,
+    nombre: "Manzanita Sol",
+    categoria: "bebidas",
+    precio: 30,
+    descripcion: "Refresco sabor manzana.",
+    imagen: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300",
+    destacado: "🍏 Manzana"
+  },
+  {
+    id: 23,
+    nombre: "Boing de Mango",
+    categoria: "bebidas",
+    precio: 30,
+    descripcion: "Néctar de fruta natural.",
+    imagen: "https://images.unsplash.com/photo-1546173159-315724a31696?w=300",
+    destacado: "🥭 Néctar"
+  },
+  {
+    id: 24,
+    nombre: "Té Arizona (Verde c/ Miel)",
+    categoria: "bebidas",
+    precio: 30,
+    descripcion: "Té helado con toque de miel.",
+    imagen: "https://images.unsplash.com/photo-1556881286-fc6915169721?w=300",
+    destacado: "🍵 Té"
+  }
+];
+
+let carrito = [];
+let ubicacionGPS = null;
+
+function renderProductos(items) {
+  const grid = document.getElementById("products-grid");
+  if (!grid) return;
+  grid.innerHTML = "";
+
+  items.forEach(prod => {
+    let selectorSaboresHtml = "";
+    if (prod.sabores && prod.sabores.length > 0) {
+      selectorSaboresHtml = `
+        <div style="margin: 8px 0;">
+          <label style="font-size: 0.75rem; color: #aaa; display: block; margin-bottom: 3px;">Salsa / Estilo:</label>
+          <select id="sabor-${prod.id}" style="width: 100%; background: #1a1a1a; color: #fff; border: 1px solid #333; padding: 6px; border-radius: 6px; font-size: 0.8rem;">
+            ${prod.sabores.map(sabor => `<option value="${sabor}">${sabor}</option>`).join('')}
+          </select>
+        </div>
+      `;
+    }
+
+    const article = document.createElement("article");
+    article.className = "product-card";
+    article.innerHTML = `
+      <div class="card-img-wrap">
+        <img src="${prod.imagen}" alt="${prod.nombre}" loading="lazy" onerror="this.src='https://via.placeholder.com/300x200?text=Rapidito+Snacks'">
+        ${prod.destacado ? `<span class="card-tag">${prod.destacado}</span>` : ''}
+      </div>
+      <div class="card-body">
+        <h3>${prod.nombre}</h3>
+        <p>${prod.descripcion}</p>
+        ${selectorSaboresHtml}
+        <div class="card-action">
+          <span class="price">$${prod.precio.toFixed(2)}</span>
+          <button class="btn-add-item" onclick="addToCart(${prod.id})">+ Pedir</button>
+        </div>
+      </div>
+    `;
+    grid.appendChild(article);
+  });
+}
+
+function addToCart(id) {
+  const producto = productos.find(p => p.id === id);
+  if (!producto) return;
+
+  const selectElem = document.getElementById(`sabor-${id}`);
+  const saborSeleccionado = selectElem ? selectElem.value : null;
+
+  const itemKey = saborSeleccionado ? `${id}-${saborSeleccionado}` : `${id}`;
+  const itemEnCarrito = carrito.find(item => item.key === itemKey);
+
+  if (itemEnCarrito) {
+    itemEnCarrito.cantidad++;
+  } else {
+    carrito.push({
+      ...producto,
+      key: itemKey,
+      sabor: saborSeleccionado,
+      cantidad: 1
+    });
+  }
+
+  actualizarCarritoUI();
+}
+
+function actualizarCarritoUI() {
+  const cartList = document.getElementById("cart-items-list");
+  const cartCount = document.getElementById("cart-count");
+  const mobileCartBadge = document.getElementById("mobile-cart-badge");
+  const totalVal = document.getElementById("total-val");
+
+  const totalItems = carrito.reduce((acc, item) => acc + item.cantidad, 0);
+  if (cartCount) cartCount.innerText = totalItems;
+  if (mobileCartBadge) mobileCartBadge.innerText = totalItems;
+
+  const totalPrecio = carrito.reduce((acc, item) => acc + (item.precio * item.cantidad), 0);
+  if (totalVal) totalVal.innerText = `$${totalPrecio.toFixed(2)}`;
+
+  if (!cartList) return;
+
+  if (carrito.length === 0) {
+    cartList.innerHTML = `
+      <div class="empty-state">
+        <span>🍔</span>
+        <p>Tu orden está vacía. ¡Elige tus snacks favoritos!</p>
+      </div>
+    `;
+    return;
+  }
+
+  cartList.innerHTML = "";
+  carrito.forEach(item => {
+    const itemDiv = document.createElement("div");
+    itemDiv.style.cssText = "display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; background: #121212; padding: 8px; border-radius: 8px;";
+    
+    const detalleSabor = item.sabor ? `<span style="font-size: 0.72rem; color: #ffb703; display: block;">Opción: ${item.sabor}</span>` : '';
+
+    itemDiv.innerHTML = `
+      <div style="flex: 1; padding-right: 8px;">
+        <strong style="font-size: 0.85rem; display: block;">${item.nombre}</strong>
+        ${detalleSabor}
+        <div style="font-size: 0.75rem; color: #aaa;">$${(item.precio * item.cantidad).toFixed(2)}</div>
+      </div>
+      <div style="display: flex; gap: 5px; align-items: center;">
+        <button onclick="cambiarCantidad('${item.key}', -1)" style="background: #2a2a2a; color: white; border: none; padding: 2px 8px; border-radius: 4px; cursor: pointer;">-</button>
+        <span style="font-size: 0.85rem; width: 16px; text-align: center;">${item.cantidad}</span>
+        <button onclick="cambiarCantidad('${item.key}', 1)" style="background: #1b263b; color: white; border: none; padding: 2px 8px; border-radius: 4px; cursor: pointer;">+</button>
+      </div>
+    `;
+    cartList.appendChild(itemDiv);
+  });
+}
+
+function cambiarCantidad(key, cambio) {
+  const item = carrito.find(i => i.key === key);
+  if (!item) return;
+
+  item.cantidad += cambio;
+  if (item.cantidad <= 0) {
+    carrito = carrito.filter(i => i.key !== key);
+  }
+
+  actualizarCarritoUI();
+}
+
+function toggleMobileCart() {
+  const sidebar = document.getElementById("cart-sidebar");
+  if (!sidebar) return;
+
+  const isVisible = getComputedStyle(sidebar).display !== "none";
+
+  if (isVisible && sidebar.style.position === "fixed") {
+    sidebar.style.display = "none";
+  } else {
+    sidebar.style.display = "flex";
+    sidebar.style.position = "fixed";
+    sidebar.style.top = "0";
+    sidebar.style.left = "0";
+    sidebar.style.width = "100%";
+    sidebar.style.height = "100vh";
+    sidebar.style.zIndex = "1000";
+  }
+}
+
+function toggleAddressInput() {
+  const isDomicilio = document.querySelector('input[name="delivery-type"][value="domicilio"]')?.checked;
+  const addressContainer = document.getElementById("delivery-address-container");
+  if (addressContainer) {
+    addressContainer.style.display = isDomicilio ? "block" : "none";
+  }
+}
+
+function toggleCashAmountInput() {
+  const paymentMethod = document.getElementById("payment-method")?.value;
+  const cashContainer = document.getElementById("cash-change-container");
+  if (cashContainer) {
+    cashContainer.style.display = (paymentMethod === "Efectivo") ? "block" : "none";
+  }
+}
+
+function obtenerUbicacionGPS() {
+  const statusElem = document.getElementById("gps-status");
+  const btnGps = document.getElementById("btn-gps");
+
+  if (!navigator.geolocation) {
+    if (statusElem) {
+      statusElem.style.color = "#ff4d4d";
+      statusElem.innerText = "Tu navegador no soporta geolocalización.";
+    }
+    return;
+  }
+
+  if (btnGps) btnGps.innerText = "⏳ Obteniendo ubicación...";
+
+  navigator.geolocation.getCurrentPosition(
+    (position) => {
+      const lat = position.coords.latitude;
+      const lng = position.coords.longitude;
+      ubicacionGPS = `https://maps.google.com/?q=${lat},${lng}`;
+      
