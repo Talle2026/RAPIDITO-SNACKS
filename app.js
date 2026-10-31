@@ -20,48 +20,48 @@ const productos = [
     id: 1,
     nombre: "Hamburguesa Original",
     categoria: "hamburguesas",
-    precio: 80,
+    precio: 70,
     descripcion: "Carne de res, tocino y queso derretido.",
     imagen: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=300",
-    destacado: "🍔 Clásica"
+    destacado: ""
   },
   {
     id: 2,
-    nombre: "Hamburguesa Hawaiana Popular",
+    nombre: "Hamburguesa Hawaiana",
     categoria: "hamburguesas",
-    precio: 90,
+    precio: 85,
     descripcion: "Carne de res, tocino, jamón, queso y piña jugosa.",
     imagen: "https://images.unsplash.com/photo-1550547660-d9450f859349?w=300",
-    destacado: "🍍 Hawaiana"
+    destacado: "Popular"
   },
   {
     id: 3,
-    nombre: "Hamburguesa Norteña Especial",
+    nombre: "Hamburguesa Norteña",
     categoria: "hamburguesas",
-    precio: 110,
+    precio: 100,
     descripcion: "Carne de res, tocino, queso y crujientes aros de cebolla.",
     imagen: "https://images.unsplash.com/photo-1586190848861-99aa4a171e90?w=300",
-    destacado: "⭐ Especial"
+    destacado: "Especial"
   },
   {
     id: 4,
     nombre: "Hamburguesa Doble",
     categoria: "hamburguesas",
-    precio: 120,
+    precio: 110,
     descripcion: "Doble carne de res, tocino, queso y aros de cebolla.",
     imagen: "https://images.unsplash.com/photo-1586190848861-99aa4a171e90?w=300",
-    destacado: "🔥 Doble Carne"
+    destacado: "🍔 La Más Grande"
   },
 
   // --- HOT DOGS ---
   {
     id: 5,
-    nombre: "3 Hot Dogs Sencillos c/ Tocino",
+    nombre: "3 Hot Dogs Sencillos con Tocino",
     categoria: "hotdogs",
     precio: 80,
     descripcion: "Paquete de 3 hot dogs clásicos envueltos en tocino.",
     imagen: "https://images.unsplash.com/photo-1619740455993-9e612b1af08a?w=300",
-    destacado: "🌭 Paquete 3x"
+    destacado: "Paquete 3x"
   },
   {
     id: 6,
@@ -70,7 +70,7 @@ const productos = [
     precio: 100,
     descripcion: "Paquete de 3 hot dogs con tocino y bastante queso manchego.",
     imagen: "https://images.unsplash.com/photo-1619740455993-9e612b1af08a?w=300",
-    destacado: "🧀 Con Queso"
+    destacado: "3x $100"
   },
   {
     id: 7,
@@ -79,7 +79,7 @@ const productos = [
     precio: 130,
     descripcion: "Paquete de 3 hot dogs con tocino, queso derretido y piña.",
     imagen: "https://images.unsplash.com/photo-1619740455993-9e612b1af08a?w=300",
-    destacado: "🍍 Hawaianos"
+    destacado: "3x $130"
   },
 
   // --- NACHOS Y SNACKS ---
@@ -87,28 +87,28 @@ const productos = [
     id: 8,
     nombre: "Nachos Especiales con Carne",
     categoria: "snacks",
-    precio: 75,
+    precio: 70,
     descripcion: "Totopos bien cargados con queso, carne sabrosa y jugosa.",
     imagen: "https://images.unsplash.com/photo-1513456852971-30c0b8199d4d?w=300",
-    destacado: "🧀 Con Carne"
+    destacado: "Cargados"
   },
   {
     id: 9,
     nombre: "Nachos Especiales con Longaniza",
     categoria: "snacks",
-    precio: 75,
-    descripcion: "Totopos bien cargados con queso y longaniza picosa.",
+    precio: 70,
+    descripcion: "Totopos bien cargados con queso y longaniza picosa y deliciosa.",
     imagen: "https://images.unsplash.com/photo-1513456852971-30c0b8199d4d?w=300",
-    destacado: "🌶️ Con Longaniza"
+    destacado: ""
   },
   {
     id: 10,
     nombre: "Nachos Especiales Campechanos",
     categoria: "snacks",
-    precio: 75,
+    precio: 70,
     descripcion: "Totopos con queso, mezcla de carne y longaniza ¡lo mejor de dos mundos!",
     imagen: "https://images.unsplash.com/photo-1513456852971-30c0b8199d4d?w=300",
-    destacado: "🎉 Campechanos"
+    destacado: "🔥 El Más Pedido"
   },
   {
     id: 11,
@@ -117,7 +117,7 @@ const productos = [
     precio: 45,
     descripcion: "Orden de papas fritas doraditas y crujientes.",
     imagen: "https://images.unsplash.com/photo-1576107232684-1279f3908594?w=300",
-    destacado: "🍟 Crujientes"
+    destacado: ""
   },
 
   // --- ALITAS ---
@@ -128,8 +128,8 @@ const productos = [
     precio: 75,
     descripcion: "Alitas crujientes preparadas con la salsa de tu elección.",
     imagen: "https://images.unsplash.com/photo-1567620832903-9fc6debc209f?w=300",
-    destacado: "🍗 Alitas",
-    sabores: ["BBQ", "Mango Habanero", "Búfalo", "Tamarindo", "Hot", "Original"]
+    destacado: "Salsas Variadas",
+    sabores: ["BBQ", "Mango Habanero", "Búfalo", "Tamarindo Habanero", "Fuego", "Original"]
   },
   {
     id: 27,
@@ -138,8 +138,8 @@ const productos = [
     precio: 90,
     descripcion: "Alitas crujientes con salsa a elegir acompañadas de papas a la francesa.",
     imagen: "https://images.unsplash.com/photo-1567620832903-9fc6debc209f?w=300",
-    destacado: "🍟 Con Papas",
-    sabores: ["BBQ", "Mango Habanero", "Búfalo", "Tamarindo", "Hot", "Original"]
+    destacado: "🍟 Recomendado",
+    sabores: ["BBQ", "Mango Habanero", "Búfalo", "Tamarindo Habanero", "Fuego", "Original"]
   },
 
   // --- POSTRES ---
@@ -177,7 +177,7 @@ const productos = [
     precio: 50,
     descripcion: "Cremoso arroz con leche espolvoreado con canela.",
     imagen: "https://images.unsplash.com/photo-1517433670267-08bbd4be890f?w=400",
-    destacado: "🥣 Tradicional"
+    destacado: "Tradicional"
   },
   {
     id: 28,
@@ -200,7 +200,7 @@ const productos = [
     sabores: ["Con Crema", "Con Lechera", "Con Mermelada", "Crema y Lechera", "Mixtos / Todo"]
   },
 
-  // --- BEBIDAS ---
+  // --- BEBIDAS (REFRESCOS Y JUGOS) ---
   {
     id: 19,
     nombre: "Coca-Cola Original 335ml",
@@ -208,7 +208,7 @@ const productos = [
     precio: 30,
     descripcion: "Lata fría de Coca-Cola sabor original 335ml.",
     imagen: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300",
-    destacado: "🥤 Bebida"
+    destacado: "Fría"
   },
   {
     id: 25,
@@ -217,7 +217,7 @@ const productos = [
     precio: 30,
     descripcion: "Lata fría de Coca-Cola Sin Azúcar 335ml.",
     imagen: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300",
-    destacado: "🥤 Light"
+    destacado: "Sin Azúcar"
   },
   {
     id: 26,
@@ -226,7 +226,7 @@ const productos = [
     precio: 30,
     descripcion: "Lata fría de Coca-Cola Zero 335ml.",
     imagen: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300",
-    destacado: "🥤 Zero"
+    destacado: "Zero"
   },
   {
     id: 20,
@@ -235,7 +235,7 @@ const productos = [
     precio: 30,
     descripcion: "Refresco sabor lima-limón en lata bien fría.",
     imagen: "https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?w=300",
-    destacado: "🍋 Cítrico"
+    destacado: ""
   },
   {
     id: 21,
@@ -244,7 +244,7 @@ const productos = [
     precio: 30,
     descripcion: "Tradicional refresco Jarrito del sabor de tu elección.",
     imagen: "https://images.unsplash.com/photo-1581006852262-e4307cf6283a?w=300",
-    destacado: "🍊 Jarrito",
+    destacado: "Sazones de México",
     sabores: ["Mandarina", "Tamarindo", "Toronja", "Limón", "Fruit Punch"]
   },
   {
@@ -254,7 +254,7 @@ const productos = [
     precio: 30,
     descripcion: "Refresco clásico sabor manzana.",
     imagen: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300",
-    destacado: "🍏 Manzana"
+    destacado: ""
   },
   {
     id: 23,
@@ -263,7 +263,7 @@ const productos = [
     precio: 30,
     descripcion: "Delicioso jugo de fruta Boing sabor a elegir.",
     imagen: "https://images.unsplash.com/photo-1546173159-315724a31696?w=300",
-    destacado: "🥭 Néctar",
+    destacado: "Fruta Real",
     sabores: ["Mango", "Guayaba", "Durazno", "Uva", "Manzana"]
   },
   {
@@ -273,7 +273,7 @@ const productos = [
     precio: 30,
     descripcion: "Lata de Té Arizona helado sabor a elegir.",
     imagen: "https://images.unsplash.com/photo-1556881286-fc6915169721?w=300",
-    destacado: "🍵 Té",
+    destacado: "Helado",
     sabores: ["Té Verde con Miel", "Sandía", "Mango (Mucho Mango)", "Té Negro con Limón", "Fruit Punch"]
   }
 ];
@@ -285,11 +285,6 @@ function renderProductos(items) {
   const grid = document.getElementById("products-grid");
   if (!grid) return;
   grid.innerHTML = "";
-
-  if (items.length === 0) {
-    grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; color: #aaa; padding: 20px;">No se encontraron productos.</div>`;
-    return;
-  }
 
   items.forEach(prod => {
     let selectorSaboresHtml = "";
@@ -367,8 +362,8 @@ function actualizarCarritoUI() {
   if (carrito.length === 0) {
     cartList.innerHTML = `
       <div class="empty-state">
-        <span>🍔</span>
-        <p>Tu orden está vacía. ¡Elige tus snacks favoritos!</p>
+        <span>🍽️</span>
+        <p>Aún no has agregado delicias a tu pedido.</p>
       </div>
     `;
     return;
@@ -390,7 +385,7 @@ function actualizarCarritoUI() {
       <div style="display: flex; gap: 5px; align-items: center;">
         <button onclick="cambiarCantidad('${item.key}', -1)" style="background: #2a2a2a; color: white; border: none; padding: 2px 8px; border-radius: 4px; cursor: pointer;">-</button>
         <span style="font-size: 0.85rem; width: 16px; text-align: center;">${item.cantidad}</span>
-        <button onclick="cambiarCantidad('${item.key}', 1)" style="background: #1b263b; color: white; border: none; padding: 2px 8px; border-radius: 4px; cursor: pointer;">+</button>
+        <button onclick="cambiarCantidad('${item.key}', 1)" style="background: #d9381e; color: white; border: none; padding: 2px 8px; border-radius: 4px; cursor: pointer;">+</button>
       </div>
     `;
     cartList.appendChild(itemDiv);
@@ -488,71 +483,6 @@ function obtenerUbicacionGPS() {
   );
 }
 
-// ==========================================
-// CONTADOR DE VISITAS Y REGISTRO INTERNO
-// ==========================================
-function registrarVisita() {
-  let visitas = parseInt(localStorage.getItem("visitas_snacks") || "0");
-  visitas++;
-  localStorage.setItem("visitas_snacks", visitas.toString());
-}
-
-function registrarPedidoInterno(items, totalVenta) {
-  let registros = JSON.parse(localStorage.getItem("registro_snacks_v2") || "[]");
-  const fechaHora = new Date().toLocaleString("es-MX");
-
-  const nuevoPedido = {
-    id: registros.length + 1,
-    fecha: fechaHora,
-    total: totalVenta,
-    detalles: items.map(i => `${i.cantidad}x ${i.nombre}${i.sabor ? ' (' + i.sabor + ')' : ''}`)
-  };
-
-  registros.push(nuevoPedido);
-  localStorage.setItem("registro_snacks_v2", JSON.stringify(registros));
-}
-
-function verRegistroSecreto() {
-  const passwordSecreto = "F@nt4$"; 
-  const ingreso = prompt("🔒 Introduce la contraseña de administración:");
-
-  if (ingreso !== passwordSecreto) {
-    if (ingreso !== null) {
-      alert("❌ Contraseña incorrecta.");
-    }
-    return;
-  }
-
-  let totalVisitas = localStorage.getItem("visitas_snacks") || "0";
-  let registros = JSON.parse(localStorage.getItem("registro_snacks_v2") || "[]");
-
-  let reporteTexto = `👀 Visitas Totales al Menú: ${totalVisitas}\n`;
-  reporteTexto += `📊 Pedidos Registrados: ${registros.length}\n`;
-  reporteTexto += `----------------------------------------\n`;
-
-  if (registros.length === 0) {
-    alert(reporteTexto + "\nAún no se han generado ventas en este dispositivo.");
-    return;
-  }
-
-  let totalDinero = 0;
-  registros.forEach(p => {
-    totalDinero += p.total;
-    reporteTexto += `#${p.id} [${p.fecha}] - Total: $${p.total}\n  ${p.detalles.join(", ")}\n\n`;
-  });
-
-  reporteTexto += `----------------------------------------\n💰 Venta Total Acumulada: $${totalDinero.toFixed(2)}\n\n`;
-  reporteTexto += `¿Deseas reiniciar los contadores (visitas y ventas) a 0 para una nueva jornada?`;
-
-  if (confirm(reporteTexto)) {
-    if (confirm("⚠️ ¿Seguro que quieres borrar el historial y las visitas?")) {
-      localStorage.removeItem("registro_snacks_v2");
-      localStorage.removeItem("visitas_snacks");
-      alert("✅ Historial y visitas reiniciados correctamente.");
-    }
-  }
-}
-
 function sendOrderWhatsApp() {
   if (carrito.length === 0) {
     alert("Agrega al menos un producto a tu pedido.");
@@ -564,13 +494,13 @@ function sendOrderWhatsApp() {
   const metodoPago = document.getElementById("payment-method")?.value || "Efectivo";
   const pagoConRaw = document.getElementById("cash-amount")?.value.trim();
 
-  let mensaje = "🍔 Hola *RAPIDITO SNACKS*, me gustaría realizar el siguiente pedido:\n\n";
+  let mensaje = "Hola *RAPIDITO SNACKS*, me gustaría realizar el siguiente pedido:\n\n";
 
   let total = 0;
   carrito.forEach(item => {
     const subtotal = item.precio * item.cantidad;
     total += subtotal;
-    const detalleSabor = item.sabor ? ` _(Opción: ${item.sabor})_` : '';
+    const detalleSabor = item.sabor ? ` _(Complemento: ${item.sabor})_` : '';
     mensaje += `▪ ${item.cantidad}x ${item.nombre}${detalleSabor} - $${subtotal.toFixed(2)}\n`;
   });
 
@@ -588,7 +518,7 @@ function sendOrderWhatsApp() {
     if (direccionTexto) mensaje += `*Dirección:* ${direccionTexto}\n`;
     if (ubicacionGPS) mensaje += `*Ubicación GPS:* ${ubicacionGPS}\n`;
   } else {
-    mensaje += `*Tipo de Pedido:* Para recoger en sucursal 🛍️\n`;
+    mensaje += `*Tipo de Pedido:* Para recoger en local 🛍️\n`;
   }
 
   mensaje += `*Método de Pago:* ${metodoPago}\n`;
@@ -607,8 +537,6 @@ function sendOrderWhatsApp() {
 
   mensaje += "\n¡Muchas gracias!";
 
-  registrarPedidoInterno(carrito, total);
-
   const url = `https://wa.me/${telefonoWhatsApp}?text=${encodeURIComponent(mensaje)}`;
   window.open(url, "_blank");
 }
@@ -623,26 +551,10 @@ window.obtenerUbicacionGPS = obtenerUbicacionGPS;
 window.sendOrderWhatsApp = sendOrderWhatsApp;
 
 document.addEventListener("DOMContentLoaded", () => {
-  registrarVisita();
   renderProductos(productos);
   actualizarCarritoUI();
 
-  // Panel secreto con contraseña al mantener presionado el título 3 segundos
-  const tituloHeader = document.querySelector("header h1") || document.querySelector(".logo");
-  if (tituloHeader) {
-    let pressTimer;
-    tituloHeader.addEventListener("touchstart", () => {
-      pressTimer = setTimeout(() => verRegistroSecreto(), 3000);
-    });
-    tituloHeader.addEventListener("touchend", () => clearTimeout(pressTimer));
-    tituloHeader.addEventListener("mousedown", () => {
-      pressTimer = setTimeout(() => verRegistroSecreto(), 3000);
-    });
-    tituloHeader.addEventListener("mouseup", () => clearTimeout(pressTimer));
-  }
-
-  // Filtros por categoría inteligentes (detectan cualquier botón de categoría)
-  const categoryButtons = document.querySelectorAll(".cat-btn, [data-category]");
+  const categoryButtons = document.querySelectorAll(".cat-btn");
   categoryButtons.forEach(btn => {
     btn.addEventListener("click", (e) => {
       categoryButtons.forEach(b => b.classList.remove("active"));
@@ -650,22 +562,17 @@ document.addEventListener("DOMContentLoaded", () => {
       const currentBtn = e.currentTarget;
       currentBtn.classList.add("active");
 
-      const cat = currentBtn.getAttribute("data-category") || currentBtn.innerText.toLowerCase().trim();
+      const cat = currentBtn.getAttribute("data-category");
 
-      if (cat === "todos" || cat.includes("todo")) {
+      if (cat === "todos") {
         renderProductos(productos);
       } else {
-        const filtrados = productos.filter(p => 
-          p.categoria.toLowerCase() === cat || 
-          cat.includes(p.categoria.toLowerCase())
-        );
-        // Si no encuentra coincidencia exacta, muestra todos por seguridad
-        renderProductos(filtrados.length > 0 ? filtrados : productos.filter(p => p.nombre.toLowerCase().includes(cat) || p.descripcion.toLowerCase().includes(cat)));
+        const filtrados = productos.filter(p => p.categoria === cat);
+        renderProductos(filtrados);
       }
     });
   });
 
-  // Barra de búsqueda de productos
   const searchInput = document.getElementById("search-input");
   if (searchInput) {
     searchInput.addEventListener("input", (e) => {
