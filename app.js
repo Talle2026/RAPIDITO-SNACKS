@@ -113,7 +113,7 @@ const productosSnacks = [
     id: 12,
     nombre: "Orden de Alitas Fuego y Sabor",
     precio: 75.00,
-    descripcion: "Alitas crujientes preparadas con salsa a elección[span_3](start_span)[span_3](end_span).",
+    descripcion: "Alitas crujientes preparadas con salsa a elección[span_1](start_span)[span_1](end_span).",
     imagen: "https://images.unsplash.com/photo-1527477396000-e27163b481c2?w=300",
     destacado: "🍗 Alitas",
     colorBorde: "#c0392b",
@@ -123,7 +123,7 @@ const productosSnacks = [
     id: 13,
     nombre: "Orden de Alitas con Papas",
     precio: 90.00,
-    descripcion: "Alitas crujientes con salsa a elegir acompañadas de papas[span_4](start_span)[span_4](end_span).",
+    descripcion: "Alitas crujientes con salsa a elegir acompañadas de papas[span_2](start_span)[span_2](end_span).",
     imagen: "https://images.unsplash.com/photo-1527477396000-e27163b481c2?w=300",
     destacado: "🍟 Con Papas",
     colorBorde: "#e74c3c",
@@ -133,7 +133,7 @@ const productosSnacks = [
     id: 14,
     nombre: "Paquete Mega: 3 Kilos de Alitas",
     precio: 500.00,
-    descripcion: "3 kilos de alitas para compartir[span_5](start_span)[span_5](end_span).",
+    descripcion: "3 kilos de alitas para compartir[span_3](start_span)[span_3](end_span).",
     imagen: "https://images.unsplash.com/photo-1608039829572-78524f79c4c7?w=400",
     destacado: "🔥 Paquete Mega",
     colorBorde: "#8e44ad",
@@ -145,7 +145,7 @@ const productosSnacks = [
     id: 15,
     nombre: "Carlota de Limón",
     precio: 50.00,
-    descripcion: "Postre frío casero con crema especial y galleta[span_6](start_span)[span_6](end_span).",
+    descripcion: "Postre frío casero con crema especial y galleta[span_4](start_span)[span_4](end_span).",
     imagen: "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=300",
     destacado: "🍰 Postre Casero",
     colorBorde: "#27ae60"
@@ -163,7 +163,7 @@ const productosSnacks = [
     id: 17,
     nombre: "Duraznos con Crema",
     precio: 50.00,
-    descripcion: "Duraznos en almíbar servidos con crema dulce especial[span_7](start_span)[span_7](end_span).",
+    descripcion: "Duraznos en almíbar servidos con crema dulce especial[span_5](start_span)[span_5](end_span).",
     imagen: "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=300",
     destacado: "🍑 Clásico",
     colorBorde: "#16a085"
@@ -196,10 +196,10 @@ const productosSnacks = [
     colorBorde: "#f39c12"
   },
 
-  // --- BEBIDAS ($30 c/u)[span_8](start_span)[span_8](end_span) ---
+  // --- BEBIDAS ($30 c/u)[span_6](start_span)[span_6](end_span) ---
   {
     id: 21,
-    nombre: "Coca-Cola Original (335ml)[span_9](start_span)[span_9](end_span)",
+    nombre: "Coca-Cola Original (335ml)[span_7](start_span)[span_7](end_span)",
     precio: 30.00,
     descripcion: "Refresco de cola bien frío.",
     imagen: "https://images.unsplash.com/photo-1554866585-cd94860890b7?w=300",
@@ -208,16 +208,16 @@ const productosSnacks = [
   },
   {
     id: 22,
-    nombre: "Coca-Cola Sin Azúcar (335ml)[span_10](start_span)[span_10](end_span)",
+    nombre: "Coca-Cola Sin Azúcar (335ml)[span_8](start_span)[span_8](end_span)",
     precio: 30.00,
-    descripcion: "Refresco sin azúcar[span_11](start_span)[span_11](end_span).",
+    descripcion: "Refresco sin azúcar[span_9](start_span)[span_9](end_span).",
     imagen: "https://images.unsplash.com/photo-1554866585-cd94860890b7?w=300",
     destacado: "🥤 Light",
     colorBorde: "#7f8c8d"
   },
   {
     id: 23,
-    nombre: "Coca-Cola Zero (335ml)[span_12](start_span)[span_12](end_span)",
+    nombre: "Coca-Cola Zero (335ml)[span_10](start_span)[span_10](end_span)",
     precio: 30.00,
     descripcion: "Refresco sabor cola sin calorías.",
     imagen: "https://images.unsplash.com/photo-1554866585-cd94860890b7?w=300",
@@ -226,7 +226,7 @@ const productosSnacks = [
   },
   {
     id: 24,
-    nombre: "Sprite (335ml)[span_13](start_span)[span_13](end_span)",
+    nombre: "Sprite (335ml)[span_11](start_span)[span_11](end_span)",
     precio: 30.00,
     descripcion: "Refresco sabor lima-limón.",
     imagen: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300",
@@ -235,7 +235,7 @@ const productosSnacks = [
   },
   {
     id: 25,
-    nombre: "Jarrito Mandarina[span_14](start_span)[span_14](end_span)",
+    nombre: "Jarrito Mandarina[span_12](start_span)[span_12](end_span)",
     precio: 30.00,
     descripcion: "Sabor tradicional mexicano.",
     imagen: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300",
@@ -244,7 +244,7 @@ const productosSnacks = [
   },
   {
     id: 26,
-    nombre: "Manzanita Sol[span_15](start_span)[span_15](end_span)",
+    nombre: "Manzanita Sol[span_13](start_span)[span_13](end_span)",
     precio: 30.00,
     descripcion: "Refresco sabor manzana.",
     imagen: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300",
@@ -253,7 +253,7 @@ const productosSnacks = [
   },
   {
     id: 27,
-    nombre: "Boing de Mango[span_16](start_span)[span_16](end_span)",
+    nombre: "Boing de Mango[span_14](start_span)[span_14](end_span)",
     precio: 30.00,
     descripcion: "Néctar de fruta natural.",
     imagen: "https://images.unsplash.com/photo-1536256263959-770b48d82b08?w=300",
@@ -262,7 +262,7 @@ const productosSnacks = [
   },
   {
     id: 28,
-    nombre: "Té Arizona (Verde c/ Miel)[span_17](start_span)[span_17](end_span)",
+    nombre: "Té Arizona (Verde c/ Miel)[span_15](start_span)[span_15](end_span)",
     precio: 30.00,
     descripcion: "Té helado con toque de miel.",
     imagen: "https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=300",
